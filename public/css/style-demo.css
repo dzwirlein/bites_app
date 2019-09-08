@@ -1,0 +1,57 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #F2641C;
+}
+
+.jumbotron {
+    background: url(../images/cover-img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top center;
+    min-height: 100vh;
+}
+
+.jumbotron .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(242, 100, 28, .8);
+}
+
+.jumbotron .jumbo-inner {
+    padding-top: 40vh;
+}
+
+.logo {
+    height: 75px;
+    width: auto;
+}
+
+#login-btn {
+    background: white;
+    color: #F29C1C;
+    /* height: 40px; */
+    width: 110px;
+}
+
+#login-text,
+#signUp {
+    font-weight: 700;
+}
+
+#slogan {
+    font-weight: 900;
+}
+
+#slogan-text {
+    font-weight: 500;
+}
+
+#arrow-div {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
