@@ -1,15 +1,29 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #F2641C;
+    color: white;
+}
+
+.form-inline {
+    display: none;
+}
+
+.nav-item {
+    display: inline;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
 }
 
 .jumbotron {
-    background: url(../images/cover-img.jpg);
+    background: url(../images/home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: top center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .jumbotron .dark-overlay {
@@ -17,29 +31,34 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background: rgba(242, 100, 28, .8);
 }
 
 .jumbotron .jumbo-inner {
-    padding-top: 40vh;
-}
-
-.logo {
-    height: 75px;
-    width: auto;
-}
-
-#login-btn {
-    background: white;
-    color: #F29C1C;
-    /* height: 40px; */
-    width: 110px;
+    padding-top: 30vh;
 }
 
 #login-text,
-#signUp {
+#signUp,
+#login-btn-2,
+#signUp-btn-2,
+.footer-links {
     font-weight: 700;
+}
+
+#login-btn-2,
+#signUp-btn-2 {
+    border: 2px solid white;
+    color: white;
+}
+
+#login-btn-2:hover,
+#signUp-btn-2:hover {
+    background:rgba(242,156, 28, 0.5);
+    border: solid 2px rgba(242,100, 28, 0.5);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 #slogan {
@@ -55,3 +74,102 @@ body {
     bottom: 0;
     left: 50%;
 }
+
+.modal-header,
+.modal-btn {
+    background: #FEB64A;
+    color: white;
+}
+
+.close {
+    color: white;
+    font-size: 2rem;
+}
+
+#more-btn {
+    color: white
+}
+
+#more-btn:hover {
+    color: #FEB64A;
+    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-sections {
+    background: #F29C1C;
+}
+
+.footer-links {
+    color: white
+}
+
+.footer-links:hover {
+    color: #FEB64A;
+    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 576px) { 
+
+
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (min-width: 768px) { 
+
+    .logo {
+        height: 75px;
+        width: auto;
+        margin-left: 80px;
+    }
+
+    .form-inline {
+        display: flex;
+    }
+
+    .jumbotron .jumbo-inner {
+        padding-top: 40vh;
+    }
+
+    #login-btn-1 {
+        background: white;
+        color: #F29C1C;
+        height: 40px;
+        width: 110px;
+    }
+
+    #login-btn-1:hover {
+        background: #F29C1C;
+        color: white;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #signUp {
+        color: white
+    }
+
+    #signUp:hover {
+        color: #FEB64A;
+        text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #btn-row {
+        display: none;
+    }
+
+ }
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 1200px) { 
+
+
+ }
+
+
+
+
