@@ -17,18 +17,18 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet"> 
 
-    <title>Document</title>
+    <title>Bites</title>
 </head>
-<body>
+<body data-spy="scroll" data-offset="2000" data-target="#more-btn" id="home">
 
     <!-- NAV SECTION -->
 
     <nav class="navbar fixed-top">
         <!-- <div class="container"> -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#home" id="home-btn">
                 <img class="logo" src="images/logo-main-white.png" alt="bites">
             </a>
-            <ul class="form-inline my-auto">
+            <ul class="d-inline my-auto">
                 <li class="nav-item">
                     <a class="btn" href="#" data-toggle="modal" data-target="#loginModal" role="button" id="login-btn-1">
                         <h5 class="my-auto" id="login-text">LOG IN</h5>
@@ -52,8 +52,8 @@
             <div class="jumbo-inner container">
                 <div class="row">
                     <div class="col text-center">
-                        <h1 class="display-2 text-white" id="slogan">Clever Slogan</h1>
-                        <h3 class="text-white" id="slogan-text">Clever sentence to go with that slogan</h3>
+                        <h1 class="display-2 text-white" id="slogan">Take a Bite,<br> Leave No Crumbs</h1>
+                        <h3 class="text-white mx-auto" id="slogan-text">Leave reviews on all your favorite (and not so favorite) restaurants without anyone knowing.</h3>
                     </div>
                 </div>
                 <div class="row mt-3" id="btn-row">
@@ -177,115 +177,87 @@
     </section>
 
 
-<!-- END SHARE SECTION -->
+    <!-- END SHARE SECTION -->
 
 
-<!-- FOOTER SECTION -->
 
-    <footer id="main-footer" class="">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center py-4">
-                    <h3 class="">Bites</h3>
-                    <ul class="my-auto">
-                        <li class="nav-item">
-                            <a class="btn" href="#" data-toggle="modal" data-target="#loginModal" role="button" id="">
-                                <h5 class="my-auto footer-links">LOG IN</h5>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <span>|</span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn" href="#" data-toggle="modal" data-target="#signUpModal" role="button" id="">
-                                <h5 class="my-auto footer-links">Sign Up</h5>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- FOOTER SECTION -->
+
+    <footer class="d-flex justify-content-end" id="main-footer">
+        <span id="footer-nav" class="">bites &copy; <span id="year"></span>    | 
+            <a class="btn footer-links" href="#" data-toggle="modal" data-target="#loginModal" role="button" id="">LOG IN</a>
+                | 
+            <a class="btn footer-links" href="#" data-toggle="modal" data-target="#signUpModal" role="button" id="">Sign Up</a>
+        </span>
     </footer>
 
-
-<!-- END FOOTER SECTION -->
+    <!-- END FOOTER SECTION -->
 
 
     <!-- MODALS -->
 
-    <!-- Log In Modal -->
-
-    <div id="loginModal" class="modal fade">
-        <div class="modal-dialog modal-login">
-            <div class="modal-content">
-                <form action="/examples/actions/confirmation.php" method="post">
-                    <div class="modal-header">				
-                        <h4 class="modal-title">Login</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">				
+    <!-- LOG IN MODAL -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content bites-modals">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">Log In</h5>
+                    <form>
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" required="required">
+                            <small for="exampleInputEmail1">Email address</small>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <div class="clearfix">
-                                <label>Password</label>
-                                <a href="#" class="pull-right text-muted"></a>
-                            </div>
-                            
-                            <input type="password" class="form-control" required="required">
+                            <small for="exampleInputPassword1">Password</small>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn pull-right modal-btn" value="Login">
-                    </div>
-                </form>
+                        <button type="submit" class="btn btn-lg btn-block modal-submit mt-4 py-1">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>     
+    </div>
 
-    <!-- Sign Up Modal -->
 
-    <div id="signUpModal" class="modal fade">
-        <div class="modal-dialog modal-login">
-            <div class="modal-content">
-                <form action="/examples/actions/confirmation.php" method="post">
-                    <div class="modal-header">				
-                        <h4 class="modal-title">Sign Up</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">				
+    <!-- SIGN UP MODAL -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content bites-modals">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">Log In</h5>
+                    <form>
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" name="username" required="required">
+                            <small for="exampleInputText">Username</small>
+                            <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp" placeholder="Enter Username" required="required">
                         </div>
                         <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="text" class="form-control" name="email" required="required">
+                            <small for="exampleInputEmail1">Email address</small>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required="required">
                         </div>
                         <div class="form-group">
-                            <div class="clearfix">
-                                <label>Password</label>
-                                <a href="#" class="pull-right text-muted"></a>
-                            </div>                            
-                            <input type="password" class="form-control" name="password" required="required">
+                            <small for="exampleInputPassword1">Password</small>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="required">
                         </div>
                         <div class="form-group">
-                            <div class="clearfix">
-                                <label>Confirm Password</label>
-                                <a href="#" class="pull-right text-muted"></a>
-                            </div>                            
-                            <input type="password" class="form-control" name="confirm_password" required="required">
+                            <small for="exampleInputPasswordConfirm">Confirm Password</small>
+                            <input type="password" class="form-control" id="exampleInputPasswordConfirm" placeholder="Confirm Password" required="required">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn pull-right modal-btn" value="Login">
-                    </div>
-                </form>
+                        <button type="submit" class="btn btn-lg btn-block modal-submit mt-4 py-1">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 
     <!-- END MODALS -->
 
@@ -301,7 +273,51 @@
     </script>
 
     <!-- Custom JavaScript -->
+
     <script>
+        
+        $(document).ready(function(){
+
+            $('#year').text(new Date().getFullYear());
+
+            $("body").scrollspy({
+                target: "#more-btn",
+                offset: 2000
+            })
+
+            $("#more-btn").on( 'click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+
+                    const hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 1000, function () {
+
+                        window.location.hash = hash;
+
+                    });
+                }
+            });
+
+            $("#home-btn").on( 'click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+
+                    const hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 1000, function () {
+
+                        window.location.hash = hash;
+
+                    });
+                }
+            });
+
+        });
 
 
     </script>
