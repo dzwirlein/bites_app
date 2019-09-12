@@ -1,0 +1,242 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #F2641C;
+    color: white;
+}
+
+/* NAV BAR ELEMENTS ********************************************************************/
+
+.form-inline {
+    display: none;
+}
+
+.navbar {
+    background: rgba(242, 100, 28, .8);
+}
+
+.nav-item {
+    display: inline;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* BUTTONS ***************************************************************************/
+
+#login-text,
+#signUp,
+#login-btn-2,
+#signUp-btn-2,
+.footer-links {
+    font-weight: 700;
+}
+
+#login-btn-2,
+#signUp-btn-2 {
+    border: 2px solid white;
+    color: white;
+}
+
+#login-btn-2:hover,
+#signUp-btn-2:hover {
+    background:rgba(242,156, 28, 0.5);
+    border: solid 2px rgba(242,100, 28, 0.5);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+
+/* JUMBOTRON ELEMENTS **************************************************************/
+
+.jumbotron {
+    background: url(../images/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top center;
+    height: 100vh;
+}
+
+.jumbotron .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(242, 100, 28, .8);
+}
+
+.jumbotron .jumbo-inner {
+    padding-top: 30vh;
+}
+
+#slogan {
+    font-weight: 900;
+}
+
+#slogan-text {
+    font-weight: 500;
+    max-width: 700px;
+}
+
+
+/* LEARN MORE ARROW ***********************************************************/
+
+#arrow-div {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+#more-btn {
+    color: white
+}
+
+#more-btn:hover {
+    color: #FEB64A;
+    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER ***********************************************************/
+
+#main-footer {
+    padding: 40px 20px 10px;
+}
+
+.footer-links {
+    color: white
+}
+
+.footer-links:hover {
+    color: #FEB64A;
+    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* MODALS **********************************************************************/
+
+/* .modal-header,
+.modal-btn {
+    background: #FEB64A;
+    color: white;
+}
+
+.close {
+    color: white;
+    font-size: 2rem;
+} */
+
+.bites-modals {
+    border: white 8px solid;
+    background: #F2641C;
+    color: white;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding: .5rem 1rem;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-submit {
+    background: #F29C1C;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.modal-submit:hover {
+    color: white;
+    background: #FFC773;
+}
+
+.fa-times {
+    color: white;
+}
+
+
+/* SECTIONS **********************************************************************/
+
+.info-sections {
+    background: #5D8CBD;
+}
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 576px) { 
+
+
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (min-width: 768px) { 
+
+    .logo {
+        height: 75px;
+        width: auto;
+        margin-left: 80px;
+    }
+
+    .form-inline {
+        display: flex;
+    }
+
+    .jumbotron .jumbo-inner {
+        padding-top: 40vh;
+    }
+
+    #login-btn-1 {
+        background: white;
+        color: #F29C1C;
+        height: 40px;
+        width: 110px;
+    }
+
+    #login-btn-1:hover {
+        background: #F29C1C;
+        color: white;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #signUp {
+        color: white
+    }
+
+    #signUp:hover {
+        color: #FEB64A;
+        text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #btn-row {
+        display: none;
+    }
+
+ }
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 1200px) { 
+
+
+ }
+
+
+
+
