@@ -1,0 +1,28 @@
+
+.form-inline {
+    display: none;
+}
+
+.navbar {
+    background: rgba(242, 100, 28, .8);
+}
+
+.nav-item {
+    display: inline;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 1200px) { 
+
+
+ }

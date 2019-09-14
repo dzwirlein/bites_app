@@ -7,7 +7,7 @@ let search = "Casablanca, Milwaukee"
 function Map() {
   const src="https://www.google.com/maps/embed/v1/place?q="+ search + "&key="+ process.env.REACT_APP_API_KEY
   return (
-    <div>
+    <div className ="map">
       <iframe width="600" height="450" frameBorder="0" stylename="border:0"
       src={src} allowFullScreen title="map"></iframe>
     </div>
