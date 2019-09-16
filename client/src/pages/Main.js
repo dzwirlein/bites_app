@@ -1,16 +1,12 @@
 import React from "react";
+import HomeBody from "../components/HomeBody";
+import Footer from "../components/Footer";
 
 function Main() {
   return (
     <div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        All the main front page content to be put here
+        <HomeBody/>
+        <Footer/>
     </div>
   );
 }
