@@ -15,7 +15,6 @@ export default {
     return axios.post("/api/users/:id", userData);
   },
   findUser: function(req){
-    console.log(req)
     return axios.get("/api/users/:id", {
       params: req
       });

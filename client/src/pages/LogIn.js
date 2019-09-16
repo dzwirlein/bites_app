@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-// import Map from "../components/Map"
+import MapG from "../components/MapG"
 import Alert from "../components/Alert"
 
 class LogIn extends Component {
@@ -53,7 +53,6 @@ class LogIn extends Component {
         userinfo:[]
       })
     }
-    console.log(this.state)
   }
 
   render() {
@@ -88,7 +87,7 @@ class LogIn extends Component {
             </Alert>
             <div style={{ opacity: this.state.signed ? 1 : 0 }}>
               <p>Content for signed in users will go here</p>
-              {/* There is issue with how enviromental variable behave in dev mode. So this component won't work for now. To be solved. <Map /> */}
+              <MapG />
             </div>
           </Col>
         </Row>

@@ -14,7 +14,7 @@ function Nav () {
                 </a>
                 <ul className="d-inline my-auto">
                     <li className="nav-item">
-                        {/* Had to simplify this buttons 'cause they weren't clicking proper. To be corrected. Hanna.
+                        {/* Had to simplify this buttons 'cause they weren't clicking proper. Please correct if you can. Hanna.
 
                         <a className="btn" href="/login" data-toggle="modal" data-target="#loginModal" role="button" id="login-btn-1">
                             <h5 className="my-auto" id="login-text">LOG IN</h5>
