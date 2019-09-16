@@ -1,5 +1,5 @@
 module.exports = {
-  User: require("./user"),
+  User: require("./User"),
   SwipedLeft: require("./swipedleft"),
   SwipedRight: require("./swipedright"),
   HatedComment: require("./hatedcomment"),
