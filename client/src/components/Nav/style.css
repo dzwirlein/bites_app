@@ -1,4 +1,8 @@
 
+body{
+    padding-top: 100px;
+}
+
 .form-inline {
     display: none;
 }
