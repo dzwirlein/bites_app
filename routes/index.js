@@ -1,6 +1,18 @@
+const axios = require("axios");
 const db = require("../models");
 
 module.exports = function(app) {
+
+  app.get("/api/search/:id", (req, res) => {
+    const link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+req.query[0]+"&key="+process.env.REACT_APP_API_PLACES
+    axios.get(link)
+    .then(function(response) {
+      res.json(response.data.results)
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+  });
 
   app.get("/api/users", (req, res) => {
     db.User.find({})
@@ -11,6 +23,7 @@ module.exports = function(app) {
   });
   
   app.post("/api/users/:id", function(req, res) {
+    console.log(req.body)
     db.User.create(req.body)
     .then(function(dbUser) {
       res.json(dbUser);
