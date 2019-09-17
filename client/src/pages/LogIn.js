@@ -6,13 +6,16 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-// import Map from "../components/Map"
+import MapG from "../components/MapG"
+import Alert from "../components/Alert"
 
 class LogIn extends Component {
   state = {
     username: "",
     password: "",
-    signed: false
+    signed: false,
+    alert: false,
+    userinfo:[]
   };
 
   handleInputChange = event => {
@@ -25,19 +28,31 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.username && this.state.password) {
-      API.saveUser({
+      API.findUser({
         username: this.state.username,
         password: this.state.password
       })
-      .then(res => this.signIn())
+      .then(res => this.signIn(res))
       .catch(err => console.log(err));
     }
   };
 
-  signIn =()=>{
-    this.setState({
-      signed: true
-    })
+  signIn =(res)=>{
+    if(res.data) {
+      this.setState({
+        userinfo: res.data,
+        signed: true
+      })
+    }
+    else{
+      this.setState({
+        username: "",
+        password: "",
+        signed: false,
+        alert: true,
+        userinfo:[]
+      })
+    }
   }
 
   render() {
@@ -66,9 +81,13 @@ class LogIn extends Component {
                 Log in
               </FormBtn>
             </form>
+            <Alert style={{ opacity: this.state.alert ? 1 : 0 }} type="danger" >
+              Log in failed. Check username and password.
+              <DeleteBtn onClick={() => this.setState({alert: false})} />
+            </Alert>
             <div style={{ opacity: this.state.signed ? 1 : 0 }}>
               <p>Content for signed in users will go here</p>
-              {/* There is issue with how enviromental variable behave in dev mode. So this component won't work for now. To be solved. <Map /> */}
+              <MapG />
             </div>
           </Col>
         </Row>

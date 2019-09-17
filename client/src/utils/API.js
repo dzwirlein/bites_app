@@ -13,5 +13,10 @@ export default {
   },
   saveUser: function(userData) {
     return axios.post("/api/users/:id", userData);
+  },
+  findUser: function(req){
+    return axios.get("/api/users/:id", {
+      params: req
+      });
   }
 };

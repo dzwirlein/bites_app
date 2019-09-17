@@ -4,7 +4,8 @@ import React from "react";
 
 let search = "Casablanca, Milwaukee"
 
-function Map() {
+function MapG() {
+
   const src="https://www.google.com/maps/embed/v1/place?q="+ search + "&key="+ process.env.REACT_APP_API_KEY
   return (
     <div className ="map">
@@ -14,4 +15,4 @@ function Map() {
   );
 }
   
-export default Map;
+export default MapG;
