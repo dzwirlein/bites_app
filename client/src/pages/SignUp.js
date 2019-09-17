@@ -67,7 +67,13 @@ class SignUp extends Component {
             </form>
           </Col>
         </Row>
-        <div style={{ opacity: this.state.signed ? 1 : 0 }}>Content for first time users will go here </div>
+        <div style={{ opacity: this.state.signed ? 1 : 0 }}>
+          <p>Content for first time users will go here</p>
+          <p>Bla-bla-bla. Particularly disclaimer that whilst we don't have intention to actively steal they info, our login method mainly serve the purpose to find part in database, not to secure. So no SSNs, credit cards and grandmothers maiden names, please. And Internet in general is dangerous place, whole credit bureaus are getting broken into.</p>
+          <a href="/login">
+            <h5 className="my-auto" id="login-text">And now link to Log In</h5>
+          </a>
+        </div>
       </Container>
     );
   }

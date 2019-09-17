@@ -1,10 +1,11 @@
 import axios from "axios";
-
+// https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=YOUR_API_KEY
 export default {
-  // getBooksGoogle: function(query) {
-  //   const link = "https://www.googleapis.com/books/v1/volumes?q="+query
-  //   return axios.get(link);
-  // },
+  getPlacesGoogle: function(req){
+    return axios.get("/api/search/:id", {
+      params: req
+    });
+  },
   // getBooks: function() {
   //   return axios.get("/api/books");
   // },
@@ -17,6 +18,6 @@ export default {
   findUser: function(req){
     return axios.get("/api/users/:id", {
       params: req
-      });
+    });
   }
 };
