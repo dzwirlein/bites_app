@@ -1,7 +1,7 @@
 module.exports = {
   User: require("./User"),
-  SwipedLeft: require("./swipedleft"),
-  SwipedRight: require("./swipedright"),
+  SwipedLeft: require("./Swipedleft"),
+  SwipedRight: require("./Swipedright"),
   HatedComment: require("./hatedcomment"),
   LovedComment: require("./lovedcomment")
 };

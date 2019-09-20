@@ -9,8 +9,11 @@ export default {
   // getBooks: function() {
   //   return axios.get("/api/books");
   // },
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+  hatePlace: function(id, place) {
+    return axios.post("/api/swipedleft/"+id, place);
+  },
+  lovePlace: function(id, place) {
+    return axios.post("/api/swipedright/"+id, place);
   },
   saveUser: function(userData) {
     return axios.post("/api/users/:id", userData);
