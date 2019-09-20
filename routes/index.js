@@ -23,10 +23,68 @@ module.exports = function(app) {
   });
   
   app.post("/api/users/:id", function(req, res) {
-    console.log(req.body)
     db.User.create(req.body)
     .then(function(dbUser) {
       res.json(dbUser);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+  });
+
+  app.post("/api/swipedleft/:id", function(req, res) {
+    const id = req.params.id
+    db.SwipedLeft.create({
+      name: req.body.name,
+      location: req.body.location
+    })
+    .then(function(dbSwipedLeft) {
+      return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedleft: dbSwipedLeft._id }}, { new: true });
+    })
+    .then(function(reqv, resp) {
+      db.User.findOne({
+        _id: id
+      })
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
+      })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(dbUser => res.json(dbUser))
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+  });
+
+  app.post("/api/swipedright/:id", function(req, res) {
+    const id = req.params.id
+    db.SwipedRight.create({
+      name: req.body.name,
+      location: req.body.location
+    })
+    .then(function(dbSwipedRight) {
+      return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedright: dbSwipedRight._id }}, { new: true });
+    })
+    .then(function(reqv, rep) {
+      db.User.findOne({
+        _id: id
+      })
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
+      })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(function(dbUser) {
+        console.log(dbUser)
+        res.json(dbUser);
+      })
     })
     .catch(function(err) {
       res.json(err);
