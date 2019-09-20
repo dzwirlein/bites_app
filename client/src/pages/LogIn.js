@@ -99,7 +99,7 @@ class LogIn extends Component {
   render() {
     return (
       <Container fluid>
-        <br /> <br /> <br /> <br /> <br /> <br /> <br />
+        <br /> 
         <Row>
           <Col size="md-6">
             <form style={{ opacity: this.state.signed ? 0 : 1 }}>

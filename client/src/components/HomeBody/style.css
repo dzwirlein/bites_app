@@ -54,3 +54,72 @@ body {
     color: #FEB64A;
     text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* SECTIONS **********************************************************************/
+
+.info-sections {
+    background: #5D8CBD;
+}
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 576px) { 
+
+
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (min-width: 768px) { 
+
+    .logo {
+        height: 75px;
+        width: auto;
+        margin-left: 80px;
+    }
+
+    .form-inline {
+        display: flex;
+    }
+
+    .jumbotron .jumbo-inner {
+        padding-top: 40vh;
+    }
+
+    #login-btn-1 {
+        background: white;
+        color: #F29C1C;
+        height: 40px;
+        width: 110px;
+    }
+
+    #login-btn-1:hover {
+        background: #F29C1C;
+        color: white;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #signUp {
+        color: white
+    }
+
+    #signUp:hover {
+        color: #FEB64A;
+        text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #btn-row {
+        display: none;
+    }
+
+ }
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 1200px) { 
+
+
+ }
