@@ -13,17 +13,11 @@ import SaveBtn from "../components/SaveBtn"
 
 
 class Dashboard extends Component {
-    state = {
-      username: "",
-      password: "",
-      signed: false,
-      alert: false,
-      userinfo:[],
-      search: "",
-      places: []
-    };
+    state = this.props.location.state;
+    
   
     handleInputChange = event => {
+        console.log(this.state)
       const { name, value } = event.target;
       this.setState({
         [name]: value
@@ -34,6 +28,7 @@ class Dashboard extends Component {
   
     handleSearchSubmit = event => {
       event.preventDefault();
+      console.log(this.state)
       API.getPlacesGoogle(this.state.search)
       .then(res=>{
         console.log(res)
@@ -45,6 +40,7 @@ class Dashboard extends Component {
    
 
 render() {
+    console.log("dash state: ", this.state)
   return (
 
         <div >
@@ -84,7 +80,7 @@ render() {
                                   {place.name} at {place.formatted_address}
                               <br />
                               </strong>
-                              {place.photos[0].html_attributions[0]}
+                              <img src ={ place.photos[0].html_attributions[0]}></img>
                               {/* <a href={book.volumeInfo.infoLink}>View</a> */}
                               <p>Rating: {place.rating}</p>
                               <br />

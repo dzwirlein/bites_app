@@ -37,12 +37,18 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    this.props.history.push('/Dashboard')
+    console.log("state: ", this.state)
+
+    this.props.history.push({
+          pathname: '/Dashboard',
+          state: this.state
+          }
+        
+    )
  
   };
 
   
-
 
   render() {
     return (
