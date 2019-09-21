@@ -71,11 +71,12 @@ class LogIn extends Component {
 
   render() {
     return (
+      // Enter username and password
       <Container fluid>
-        <br /> <br /> <br /> <br /> <br /> <br /> <br />
+        {/* <br /> <br /> <br /> <br /> <br /> <br /> <br /> */}
         <Row>
           <Col size="md-6">
-            <form style={{ opacity: this.state.signed ? 0 : 1 }}>
+            <form style={{ display: this.state.signed ? "none" : "block" }}>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
@@ -100,6 +101,7 @@ class LogIn extends Component {
               <DeleteBtn onClick={() => this.setState({alert: false})} />
             </Alert>
             <div style={{ opacity: this.state.signed ? 1 : 0 }}>
+      {/* Page after Loggin In */}
               <h1>Content for signed in users will go here</h1>
               <MapG />
               <Container fluid>
