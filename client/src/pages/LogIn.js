@@ -78,10 +78,9 @@ class LogIn extends Component {
   lovePlace = placeData => {
     API.lovePlace(this.state.userID, placeData)
     .then(res => {
-      // this.setState({        
-      //   lovedplaces: res.data.swipedright,
-      //   hatedplaces: res.data.swipedleft
-      // })
+      this.setState({        
+        lovedplaces: res.data.swipedright
+      })
     })
     .catch(err => console.log(err));
   };
@@ -89,8 +88,7 @@ class LogIn extends Component {
   hatePlace = placeData => {
     API.hatePlace(this.state.userID, placeData)
     .then(res => {
-      this.setState({        
-        lovedplaces: res.data.swipedright,
+      this.setState({
         hatedplaces: res.data.swipedleft
       })
     })
@@ -102,7 +100,8 @@ class LogIn extends Component {
     const id = event.target.id
     API.postHatedComment(id, this.state.comment)
     .then(res => {
-      this.setState({        
+      console.log(res)
+      this.setState({     
         comment: ""
       })
     })
@@ -119,10 +118,6 @@ class LogIn extends Component {
       })
     })
     .catch(err => console.log(err));
-  }
-
-  savePlaceId = id =>{
-    this.setState({commentid: id})
   }
 
   render() {
@@ -227,6 +222,17 @@ class LogIn extends Component {
                           <Jumbotron>
                             {place.name}
                           </Jumbotron>
+                          <Jumbotron>
+                            <List>
+                              {place.lovedcomment.map(comment =>(
+                                <ListItem key={comment._id}>
+                                  <Jumbotron>
+                                    Comment: {comment.body}
+                                  </Jumbotron>
+                                </ListItem>
+                              ))}
+                            </List>
+                          </Jumbotron>
                           <DeleteBtn onClick={() => this.deletePlace(place._id)} />
                           <form>
                             <TextArea
@@ -264,6 +270,17 @@ class LogIn extends Component {
                         <div>
                           <Jumbotron>
                             {place.name}
+                          </Jumbotron>
+                          <Jumbotron>
+                            <List>
+                              {place.hatedcomment.map(comment =>(
+                                <ListItem key={comment._id}>
+                                  <Jumbotron>
+                                    Comment: {comment.body}
+                                  </Jumbotron>
+                                </ListItem>
+                              ))}
+                            </List>
                           </Jumbotron>
                           <DeleteBtn onClick={() => this.deletePlace(place._id)} />
                           <form>
