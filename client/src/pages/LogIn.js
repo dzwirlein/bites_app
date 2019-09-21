@@ -15,11 +15,15 @@ class LogIn extends Component {
   state = {
     username: "",
     password: "",
+    userID:"",
     signed: false,
     alert: false,
     userinfo:[],
     search: "",
-    places: []
+    places: [],
+    lovedplaces:[],
+    hatedplaces:[],
+    comment: ""
   };
 
   handleInputChange = event => {
@@ -45,7 +49,10 @@ class LogIn extends Component {
     if(res.data) {
       this.setState({
         userinfo: res.data,
-        signed: true
+        signed: true,
+        userID: res.data._id,
+        lovedplaces: res.data.swipedright,
+        hatedplaces: res.data.swipedleft
       })
     }
     else{
@@ -63,11 +70,60 @@ class LogIn extends Component {
     event.preventDefault();
     API.getPlacesGoogle(this.state.search)
     .then(res=>{
-      console.log(res)
       this.setState({ places: res.data, search: ""})
     })
    .catch(err => console.log(err));
   };
+
+  lovePlace = placeData => {
+    API.lovePlace(this.state.userID, placeData)
+    .then(res => {
+      // this.setState({        
+      //   lovedplaces: res.data.swipedright,
+      //   hatedplaces: res.data.swipedleft
+      // })
+    })
+    .catch(err => console.log(err));
+  };
+
+  hatePlace = placeData => {
+    API.hatePlace(this.state.userID, placeData)
+    .then(res => {
+      this.setState({        
+        lovedplaces: res.data.swipedright,
+        hatedplaces: res.data.swipedleft
+      })
+    })
+    .catch(err => console.log(err));
+  };
+
+  handleHatedCommentSubmit = event => {
+    event.preventDefault();
+    const id = event.target.id
+    API.postHatedComment(id, this.state.comment)
+    .then(res => {
+      this.setState({        
+        comment: ""
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  handleLovedCommentSubmit = event => {
+    const id = event.target.id
+    event.preventDefault();
+    API.postLovedComment(id, this.state.comment)
+    .then(res => {
+      this.setState({        
+        comment: ""
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  savePlaceId = id =>{
+    this.setState({commentid: id})
+  }
 
   render() {
     return (
@@ -141,10 +197,13 @@ class LogIn extends Component {
                               {place.photos[0].html_attributions[0]}
                               {/* <a href={book.volumeInfo.infoLink}>View</a> */}
                               <p>Rating: {place.rating}</p>
+                              <p>Price level: {place.price_level}</p>
                               <br />
                               {/* <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Book" /> */}
                             </Jumbotron>
                             {/* <SaveBtn onClick={() => this.saveBook(book.volumeInfo)} /> */}
+                            <SaveBtn onClick={() => this.lovePlace(place)} />
+                            <DeleteBtn onClick={() => this.hatePlace(place)} />
                         </ListItem>
                       ))}
                     </List>
@@ -156,7 +215,84 @@ class LogIn extends Component {
             </Container>
             </div>
           </Col>
-        </Row>
+          <div style={{ opacity: this.state.signed ? 1 : 0 }}>
+          <Col size="md-12" >
+              <Container fluid>
+                <Jumbotron>
+                  <h1>Loved Places</h1>
+                </Jumbotron>
+                {this.state.lovedplaces.length ? (
+                  <List>
+                    {this.state.lovedplaces.map(place => (
+                      <ListItem key={place._id}>
+                        <Container>
+                          <Jumbotron>
+                            {place.name}
+                          </Jumbotron>
+                          <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                          <form>
+                            <TextArea
+                              value={this.state.comment}
+                              onChange={this.handleInputChange}
+                              name="comment"
+                              placeholder="What is so good about it?"
+                            />
+                            <FormBtn
+                              disabled={!(this.state.comment)}
+                              id={place._id}
+                              onClick={this.handleLovedCommentSubmit}
+                            >
+                              Submit Comment
+                            </FormBtn>
+                          </form>
+
+                        </Container>
+                      </ListItem>
+                    ))}
+                  </List>
+                ): (
+                <h3>No Results to Display</h3>)}
+                </Container>  
+            </Col>
+            <Col size="md-12">
+              <Container fluid>
+                <Jumbotron>
+                  <h1>Hated Places</h1>
+                </Jumbotron>
+                {this.state.hatedplaces.length ? (
+                  <List>
+                    {this.state.hatedplaces.map(place => (
+                      <ListItem key={place._id}>
+                        <div>
+                          <Jumbotron>
+                            {place.name}
+                          </Jumbotron>
+                          <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                          <form>
+                            <TextArea
+                              value={this.state.comment}
+                              onChange={this.handleInputChange}
+                              name="comment"
+                              placeholder="Why did you hate it?"
+                            />
+                            <FormBtn
+                              disabled={!(this.state.comment)}
+                              id={place._id}
+                              onClick={this.handleHatedCommentSubmit}
+                            >
+                              Submit Comment
+                            </FormBtn>
+                          </form>
+                        </div>
+                      </ListItem>
+                    ))}
+                  </List>
+                ): (
+                <h3>No Results to Display</h3>)}
+                </Container> 
+            </Col>
+            </div>
+          </Row>
       </Container>
     );
   }
