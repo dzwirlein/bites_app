@@ -109,12 +109,11 @@ module.exports = function(app) {
       return db.SwipedLeft.findOneAndUpdate({ _id: id }, { $push: { hatedcomment: dbHatedComment._id }}, { new: true });
     })
     .then(function(reqv, rep) {
-      db.SwipedLeft.findOne({
-        _id: id
-      })
+        db.SwipedLeft.findOne({
+          _id: id
+        })
       .populate("hatedcomment")
       .then(function(dbSwipedLeft) {
-        console.log(dbSwipedLeft)
         res.json(dbSwipedLeft);
       })
     })
@@ -136,7 +135,9 @@ module.exports = function(app) {
       path: 'swipedright',
       populate: { path: 'lovedcomment' }
     })
-    .then(dbUser => res.json(dbUser))
+    .then(function(dbUser) {
+      res.json(dbUser);
+    })
     .catch(function(err) {
       res.json(err);
     });
