@@ -22,7 +22,8 @@ class LogIn extends Component {
     search: "",
     places: [],
     lovedplaces:[],
-    hatedplaces:[]
+    hatedplaces:[],
+    comment: ""
   };
 
   handleInputChange = event => {
@@ -95,6 +96,34 @@ class LogIn extends Component {
     })
     .catch(err => console.log(err));
   };
+
+  handleHatedCommentSubmit = event => {
+    event.preventDefault();
+    const id = event.target.id
+    API.postHatedComment(id, this.state.comment)
+    .then(res => {
+      this.setState({        
+        comment: ""
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  handleLovedCommentSubmit = event => {
+    const id = event.target.id
+    event.preventDefault();
+    API.postLovedComment(id, this.state.comment)
+    .then(res => {
+      this.setState({        
+        comment: ""
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  savePlaceId = id =>{
+    this.setState({commentid: id})
+  }
 
   render() {
     return (
@@ -184,53 +213,84 @@ class LogIn extends Component {
             </Container>
             </div>
           </Col>
-          <Col size="md-12">
-            <Container fluid>
-              <Jumbotron>
-                <h1>Loved Places</h1>
-              </Jumbotron>
-              {this.state.lovedplaces.length ? (
-                <List>
-                  {this.state.lovedplaces.map(place => (
-                    <ListItem key={place._id}>
-                      <Container>
-                        <Jumbotron>
-                          {place.name}
-                        </Jumbotron>
-                        {/* Here will add comment function*/}
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
-                      </Container>
-                    </ListItem>
-                  ))}
-                </List>
-              ): (
-              <h3>No Results to Display</h3>)}
-              </Container>  
-          </Col>
-          <Col size="md-12">
-            <Container fluid>
-              <Jumbotron>
-                <h1>Hated Places</h1>
-              </Jumbotron>
-              {this.state.hatedplaces.length ? (
-                <List>
-                  {this.state.hatedplaces.map(place => (
-                    <ListItem key={place._id}>
-                      <div>
-                        <Jumbotron>
-                          {place.name}
-                        </Jumbotron>
-                        {/* Here will add comment function*/}
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
-                      </div>
-                    </ListItem>
-                  ))}
-                </List>
-              ): (
-              <h3>No Results to Display</h3>)}
-              </Container>  
-          </Col>
-        </Row>
+          <div style={{ opacity: this.state.signed ? 1 : 0 }}>
+          <Col size="md-12" >
+              <Container fluid>
+                <Jumbotron>
+                  <h1>Loved Places</h1>
+                </Jumbotron>
+                {this.state.lovedplaces.length ? (
+                  <List>
+                    {this.state.lovedplaces.map(place => (
+                      <ListItem key={place._id}>
+                        <Container>
+                          <Jumbotron>
+                            {place.name}
+                          </Jumbotron>
+                          <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                          <form>
+                            <TextArea
+                              value={this.state.comment}
+                              onChange={this.handleInputChange}
+                              name="comment"
+                              placeholder="What is so good about it?"
+                            />
+                            <FormBtn
+                              disabled={!(this.state.comment)}
+                              id={place._id}
+                              onClick={this.handleLovedCommentSubmit}
+                            >
+                              Submit Comment
+                            </FormBtn>
+                          </form>
+
+                        </Container>
+                      </ListItem>
+                    ))}
+                  </List>
+                ): (
+                <h3>No Results to Display</h3>)}
+                </Container>  
+            </Col>
+            <Col size="md-12">
+              <Container fluid>
+                <Jumbotron>
+                  <h1>Hated Places</h1>
+                </Jumbotron>
+                {this.state.hatedplaces.length ? (
+                  <List>
+                    {this.state.hatedplaces.map(place => (
+                      <ListItem key={place._id}>
+                        <div>
+                          <Jumbotron>
+                            {place.name}
+                          </Jumbotron>
+                          <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                          <form>
+                            <TextArea
+                              value={this.state.comment}
+                              onChange={this.handleInputChange}
+                              name="comment"
+                              placeholder="Why did you hate it?"
+                            />
+                            <FormBtn
+                              disabled={!(this.state.comment)}
+                              id={place._id}
+                              onClick={this.handleHatedCommentSubmit}
+                            >
+                              Submit Comment
+                            </FormBtn>
+                          </form>
+                        </div>
+                      </ListItem>
+                    ))}
+                  </List>
+                ): (
+                <h3>No Results to Display</h3>)}
+                </Container> 
+            </Col>
+            </div>
+          </Row>
       </Container>
     );
   }

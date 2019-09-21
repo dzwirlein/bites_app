@@ -6,9 +6,12 @@ export default {
       params: req
     });
   },
-  // getBooks: function() {
-  //   return axios.get("/api/books");
-  // },
+  postHatedComment: function(id, comment){
+    return axios.post("/api/hatedcomment/"+id, {body: comment});
+  },
+  postLovedComment: function(id, comment){
+    return axios.post("/api/lovedcomment/"+id, {body: comment});
+  },
   hatePlace: function(id, place) {
     return axios.post("/api/swipedleft/"+id, place);
   },
