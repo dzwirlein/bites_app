@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+import Card from "../components/Card";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -10,6 +10,11 @@ import MapG from "../components/MapG"
 import Alert from "../components/Alert"
 import PoweredByGoogle from "../components/PoweredByGoogle"
 import SaveBtn from "../components/SaveBtn"
+
+
+import {
+  withRouter
+} from 'react-router-dom'
 
 class LogIn extends Component {
   state = {
@@ -31,43 +36,13 @@ class LogIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
-      API.findUser({
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(res => this.signIn(res))
-      .catch(err => console.log(err));
-    }
+
+    this.props.history.push('/Dashboard')
+ 
   };
 
-  signIn =(res)=>{
-    if(res.data) {
-      this.setState({
-        userinfo: res.data,
-        signed: true
-      })
-    }
-    else{
-      this.setState({
-        username: "",
-        password: "",
-        signed: false,
-        alert: true,
-        userinfo:[]
-      })
-    }
-  }
+  
 
-  handleSearchSubmit = event => {
-    event.preventDefault();
-    API.getPlacesGoogle(this.state.search)
-    .then(res=>{
-      console.log(res)
-      this.setState({ places: res.data, search: ""})
-    })
-   .catch(err => console.log(err));
-  };
 
   render() {
     return (
@@ -99,60 +74,6 @@ class LogIn extends Component {
               Log in failed. Check username and password.
               <DeleteBtn onClick={() => this.setState({alert: false})} />
             </Alert>
-            <div style={{ opacity: this.state.signed ? 1 : 0 }}>
-              <h1>Content for signed in users will go here</h1>
-              <MapG />
-              <Container fluid>
-              <Row>
-                <Col size="md-12">
-                  <Jumbotron>
-                    <h1>Search Places</h1>
-                  </Jumbotron>
-                  {/* <Alert style={{ opacity: this.state.alert ? 1 : 0 }} type="success" >
-                  Book Saved
-                  <DeleteBtn onClick={() => this.setState({alert: false})} />
-                  </Alert> */}
-                  <form>
-                    <Input
-                      value={this.state.search}
-                      onChange={this.handleInputChange}
-                      name="search"
-                      placeholder="Search for"
-                    />
-                    <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
-                      Search
-                    </FormBtn>
-                    <PoweredByGoogle />
-                  </form>
-                  <Jumbotron>
-                    <h1>Google Places search results</h1>
-                  </Jumbotron>
-                  {this.state.places.length ? (
-                    <List>
-                      {this.state.places.map(place => (
-                        <ListItem key={place.id}>
-                            <Jumbotron>
-                              <strong>
-                                  {place.name} at {place.formatted_address}
-                              <br />
-                              </strong>
-                              {place.photos[0].html_attributions[0]}
-                              {/* <a href={book.volumeInfo.infoLink}>View</a> */}
-                              <p>Rating: {place.rating}</p>
-                              <br />
-                              {/* <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Book" /> */}
-                            </Jumbotron>
-                            {/* <SaveBtn onClick={() => this.saveBook(book.volumeInfo)} /> */}
-                        </ListItem>
-                      ))}
-                    </List>
-                  ) : (
-                  <h3>No Results to Display</h3>
-                  )}
-                </Col>
-              </Row>
-            </Container>
-            </div>
           </Col>
         </Row>
       </Container>
@@ -160,4 +81,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default withRouter(LogIn);
