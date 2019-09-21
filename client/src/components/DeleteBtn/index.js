@@ -3,9 +3,7 @@ import "./style.css";
 
 function DeleteBtn(props) {
   return (
-    <span className="delete-btn" {...props} role="button" tabIndex="0">
-      ✗
-    </span>
+    <box-icon name='x' id="delete-btn" {...props} animation='tada' rotate='180' color='#ee1008' size="lg" role="button" tabIndex="0" pull="left"></box-icon>
   );
 }
 

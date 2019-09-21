@@ -129,7 +129,7 @@ class LogIn extends Component {
     return (
       // Enter username and password
       <Container fluid>
-        {/* <br /> <br /> <br /> <br /> <br /> <br /> <br /> */}
+        <br /> <br /> <br /> <br /> <br /> <br /> <br />
         <Row>
           <Col size="md-6">
             <form style={{ display: this.state.signed ? "none" : "block" }}>
