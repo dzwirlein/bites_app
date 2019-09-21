@@ -1,11 +1,7 @@
-
-body{
-    padding-top: 100px;
+#nav-btns {
+    display: none !important;
 }
 
-.form-inline {
-    display: none;
-}
 
 .navbar {
     background: rgba(242, 100, 28, .8);
@@ -20,12 +16,60 @@ body{
     width: auto;
 }
 
-/* Medium devices (tablets, less than 992px) */
+.btn:focus {
+    box-shadow: none;
+}
+
+/* BUTTONS *****************************************************************/
+
+#login-text,
+#signUp {
+    font-weight: 700;
+}
+
+/* Medium devices (landscape phones, larger than 768px) */
+@media (min-width: 768px) { 
+
+    .logo {
+        height: 75px;
+        width: auto;
+        margin-left: 80px;
+    }
+
+    #nav-btns {
+        display: flex !important;
+    }
+
+    #login-btn-1 {
+        background: white;
+        color: #F29C1C;
+        height: 40px;
+        width: 110px;
+    }
+
+    #login-btn-1:hover {
+        background: #F29C1C;
+        color: white;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #signUp {
+        color: white
+    }
+
+    #signUp:hover {
+        color: #FEB64A;
+        text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    }
+
+ }
+
+/* Large devices (tablets, larger than 992px) */
 @media (min-width: 992px) {
 
 }
 
-/* Large devices (desktops, less than 1200px) */
+/* X-Large devices (desktops, larger than 1200px) */
 @media (min-width: 1200px) { 
 
 

@@ -1,7 +1,26 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #F2641C;
+/* BUTTONS ***************************************************************************/
+
+#login-btn-2,
+#signUp-btn-2 {
+    font-weight: 700;
+}
+
+#login-btn-2,
+#signUp-btn-2 {
+    border: 2px solid white;
     color: white;
+}
+
+#login-btn-2:hover,
+#signUp-btn-2:hover {
+    background:rgba(242,156, 28, 0.5);
+    border: solid 2px rgba(242,100, 28, 0.5);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.btn:focus {
+    box-shadow: none;
 }
 
 /* JUMBOTRON ELEMENTS **************************************************************/
@@ -25,7 +44,7 @@ body {
 }
 
 .jumbotron .jumbo-inner {
-    padding-top: 30vh;
+    padding-top: 15vh;
 }
 
 #slogan {
@@ -43,7 +62,7 @@ body {
 #arrow-div {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: 46%;
 }
 
 #more-btn {
@@ -71,44 +90,16 @@ body {
 /* Small devices (landscape phones, less than 768px) */
 @media (min-width: 768px) { 
 
-    .logo {
-        height: 75px;
-        width: auto;
-        margin-left: 80px;
-    }
-
-    .form-inline {
-        display: flex;
-    }
-
     .jumbotron .jumbo-inner {
         padding-top: 40vh;
     }
 
-    #login-btn-1 {
-        background: white;
-        color: #F29C1C;
-        height: 40px;
-        width: 110px;
-    }
-
-    #login-btn-1:hover {
-        background: #F29C1C;
-        color: white;
-        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    #signUp {
-        color: white
-    }
-
-    #signUp:hover {
-        color: #FEB64A;
-        text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
-    }
-
     #btn-row {
         display: none;
+    }
+
+    #arrow-div {
+        left: 48%;
     }
 
  }
