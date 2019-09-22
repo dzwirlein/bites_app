@@ -19,7 +19,7 @@ export default {
     return axios.post("/api/swipedright/"+id, place);
   },
   saveUser: function(userData) {
-    return axios.post("/api/users/:id", userData);
+    return axios.get("/api/users/", {params: userData});
   },
   findUser: function(req){
     return axios.get("/api/users/:id", {

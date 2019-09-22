@@ -14,10 +14,20 @@ module.exports = function(app) {
     });
   });
   
-  app.post("/api/users/:id", function(req, res) {
-    db.User.create(req.body)
+  app.get("/api/users/", function(req, res) {
+    db.User.findOne({
+      username: req.query.username
+    })
     .then(function(dbUser) {
-      res.json(dbUser);
+      if(!dbUser){
+        db.User.create(req.query)
+        .then(function(newUser) {
+          res.json(newUser);
+        })
+      }
+      else{
+        res.json(false)
+      }
     })
     .catch(function(err) {
       res.json(err);

@@ -15,31 +15,24 @@ import SaveBtn from "../components/SaveBtn"
 class Dashboard extends Component {
     state = this.props.location.state;
     
-  
     handleInputChange = event => {
-        console.log(this.state)
       const { name, value } = event.target;
       this.setState({
         [name]: value
       });
     };
-  
-  
-  
+
     handleSearchSubmit = event => {
       event.preventDefault();
-      console.log(this.state)
-      API.getPlacesGoogle(this.state.search)
+      API.getPlacesGoogle(this.state.search.replace(/ /g, '+').replace(/,/g, ''))
       .then(res=>{
-        console.log(res)
-        this.setState({ places: res.data, search: ""})
+        this.setState({ places: res.data })
       })
      .catch(err => console.log(err));
     };
 
 
     lovePlace = placeData => {
-      console.log(this.state)
       API.lovePlace(this.state.userID, placeData)
       .then(res => {
         this.setState({        
@@ -64,7 +57,6 @@ class Dashboard extends Component {
       const id = event.target.id
       API.postHatedComment(id, this.state.comment)
       .then(res => {
-        console.log(res)
         this.setState({     
           comment: ""
         })
@@ -92,7 +84,6 @@ class Dashboard extends Component {
         <div>
             <div>
                 <h1>Content for signed in users will go here</h1>
-                <MapG />
                 <Container fluid>
                 <Row>
                   <Col size="md-12">
@@ -127,8 +118,6 @@ class Dashboard extends Component {
                                     {place.name} at {place.formatted_address}
                                 <br />
                                 </strong>
-                                {place.photos[0].html_attributions[0]}
-                                {/* <a href={book.volumeInfo.infoLink}>View</a> */}
                                 <p>Rating: {place.rating}</p>
                                 <p>Price level: {place.price_level}</p>
                                 <br />
@@ -144,6 +133,9 @@ class Dashboard extends Component {
                     <h3>No Results to Display</h3>
                     )}
                   </Col>
+                  {this.state.search ? (
+                    <MapG search={this.state.search.replace(/ /g, '+').replace(/,/g, '')} />
+                  ) : (<div></div>)}
                 </Row>
               </Container>
               </div>
