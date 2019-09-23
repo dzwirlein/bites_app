@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Alert from "../components/Alert";
 
 class SignUp extends Component {
   state = {
     username: "",
     password: "",
-    signed: false
+    signed: false,
+    alert: false
   };
 
   handleInputChange = event => {
@@ -28,7 +30,16 @@ class SignUp extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then(res => this.signIn())
+      .then(res => {
+        if(!res.data){
+          this.setState({
+            alert: true
+          })
+        }
+        else{
+          this.signIn()
+        }
+      })
       .catch(err => console.log(err));
     }
   };
@@ -65,6 +76,10 @@ class SignUp extends Component {
                 Sign up
               </FormBtn>
             </form>
+            <Alert style={{ opacity: this.state.alert ? 1 : 0 }} type="danger" >
+              This username is not available. Be more original.
+              <DeleteBtn onClick={() => this.setState({alert: false})} />
+            </Alert>
           </Col>
         </Row>
         <div style={{ opacity: this.state.signed ? 1 : 0 }}>

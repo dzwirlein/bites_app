@@ -14,10 +14,20 @@ module.exports = function(app) {
     });
   });
   
-  app.post("/api/users/:id", function(req, res) {
-    db.User.create(req.body)
+  app.get("/api/users/", function(req, res) {
+    db.User.findOne({
+      username: req.query.username
+    })
     .then(function(dbUser) {
-      res.json(dbUser);
+      if(!dbUser){
+        db.User.create(req.query)
+        .then(function(newUser) {
+          res.json(newUser);
+        })
+      }
+      else{
+        res.json(false)
+      }
     })
     .catch(function(err) {
       res.json(err);
@@ -28,7 +38,7 @@ module.exports = function(app) {
     const id = req.params.id
     db.SwipedLeft.create({
       name: req.body.name,
-      location: req.body.location
+      location: req.body.geometry.location
     })
     .then(function(dbSwipedLeft) {
       return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedleft: dbSwipedLeft._id }}, { new: true });
@@ -56,7 +66,7 @@ module.exports = function(app) {
     const id = req.params.id
     db.SwipedRight.create({
       name: req.body.name,
-      location: req.body.location
+      location: req.body.geometry.location
     })
     .then(function(dbSwipedRight) {
       return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedright: dbSwipedRight._id }}, { new: true });
