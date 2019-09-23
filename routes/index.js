@@ -38,7 +38,7 @@ module.exports = function(app) {
     const id = req.params.id
     db.SwipedLeft.create({
       name: req.body.name,
-      location: req.body.location
+      location: req.body.geometry.location
     })
     .then(function(dbSwipedLeft) {
       return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedleft: dbSwipedLeft._id }}, { new: true });
@@ -66,7 +66,7 @@ module.exports = function(app) {
     const id = req.params.id
     db.SwipedRight.create({
       name: req.body.name,
-      location: req.body.location
+      location: req.body.geometry.location
     })
     .then(function(dbSwipedRight) {
       return db.User.findOneAndUpdate({ _id: id }, { $push: { swipedright: dbSwipedRight._id }}, { new: true });
