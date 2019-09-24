@@ -2,7 +2,6 @@
     display: none !important;
 }
 
-
 .navbar {
     background: rgba(242, 100, 28, .8);
 }
@@ -23,7 +22,8 @@
 /* BUTTONS *****************************************************************/
 
 #login-text,
-#signUp {
+#signUp,
+#modal-btn {
     font-weight: 700;
 }
 
@@ -40,14 +40,16 @@
         display: flex !important;
     }
 
-    #login-btn-1 {
+    #login-btn-1,
+    #modal-btn {
         background: white;
         color: #F29C1C;
         height: 40px;
         width: 110px;
     }
 
-    #login-btn-1:hover {
+    #login-btn-1:hover,
+    #modal-btn:hover {
         background: #F29C1C;
         color: white;
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);

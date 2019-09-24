@@ -1,8 +1,7 @@
 import React from "react";
 import "./style.css";
 import logo from "./logo-main-white.png";
-import LogInModal from "../LogInModal";
-import SignUpModal from "../SignUpModal";
+
 
 
 function Nav () {
