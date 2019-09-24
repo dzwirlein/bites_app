@@ -11,6 +11,8 @@ import MapMarkers from "../components/MapMarkers";
 import Alert from "../components/Alert";
 import PoweredByGoogle from "../components/PoweredByGoogle";
 import SaveBtn from "../components/SaveBtn";
+import InnerNav from "../components/InnerNav";
+import InnerFooter from "../components/InnerFooter";
 
 class Dashboard extends Component {
 
@@ -81,29 +83,134 @@ class Dashboard extends Component {
     return (
 
       <div>
+        <InnerNav />
+
+ {/* SEARCH BAR */}
+
+          <section className="mt-5" id="search-section">
+              <div className="container rounded bg-light p-3 border-light">
+                  {/* <div className="row"> */}
+                      <form className="">
+                          <Input
+                            value={this.state.search}
+                            onChange={this.handleInputChange}
+                            name="search"
+                            placeholder="Search for"
+                          />
+                          <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
+                            Search
+                          </FormBtn>
+                          <FormBtn>
+                            Random Suggestion
+                          </FormBtn>
+                          <FormBtn>
+                            History
+                          </FormBtn>
+                          {/* <PoweredByGoogle /> */}
+                    </form>
+                  {/* </div> */}
+              </div>        
+          </section>
+
+{/* END SEARCH BAR */}
+
+{/* MAP */}
+
+          {this.state.search ? (
+            <MapG search={this.state.search.replace(/ /g, '+').replace(/,/g, '')} />
+          ) : (<MapG search="Milwaukee, WI"/>)}
+    
+{/* END MAP */}
+
+{/* RESULTS SECTION */}
+
+          <section className="my-3" id="results-section">
+              <div className="container bg-light rounded p-4">
+                  <div class="card my-0">
+                      <div class="card-header">
+                          Search Results
+                      </div>
+                      <div class="card-body">
+                        {/* RESULTS 1 DIV */}
+                        <div>
+                          <div className="row">
+                              <div className="col-md-4">
+                                  <p>Put Results Name Here</p>
+                              </div>
+                              <div className="col-md-8">
+                                  <p>Put Results Address Here</p>
+                              </div>
+                          </div>
+                          <div className="row mt-3">
+                              <div className="col-md-2">
+                                <p>Rating:</p>
+                                <p>Price Level:</p>
+                              </div>
+                              <div className="col-md-10">
+                                <form>
+                                  <div className="form-group">
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Comments..." rows="2"></textarea>
+                                  </div>
+                                  <button type="submit" className="btn btn-primary">Like</button>
+                                  <button type="submit" className=" mx-3 btn btn-primary">Dislike</button>
+                                  <button type="submit" className="btn btn-primary">Submit</button>
+                                </form>
+                              </div>
+                          </div>
+                          <hr />
+                        </div>
+                        {/* END RESULTS 1 DIV */}
+
+                        {/* RESULTS 2 DIV */}
+                        <div>
+                          <div className="row">
+                              <div className="col-md-4">
+                                  <p>Put Results Name Here</p>
+                              </div>
+                              <div className="col-md-8">
+                                  <p>Put Results Address Here</p>
+                              </div>
+                          </div>
+                          <div className="row mt-3">
+                              <div className="col-md-2">
+                                <p>Rating:</p>
+                                <p>Price Level:</p>
+                              </div>
+                              <div className="col-md-10">
+                                <form>
+                                  <div className="form-group">
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Comments..." rows="2"></textarea>
+                                  </div>
+                                  <button type="submit" className="btn btn-primary">Like</button>
+                                  <button type="submit" className=" mx-3 btn btn-primary">Dislike</button>
+                                  <button type="submit" className="btn btn-primary">Submit</button>
+                                </form>
+                              </div>
+                          </div>
+                          <hr />
+                        </div>
+                        {/* END RESULTS 2 DIV */}
+
+                      </div>
+                      {/* END CARD BODY */}
+                  </div>
+                  {/* END CARD */}
+              </div>
+          </section>
+
+{/* END RESULTS SECTION */}
+
+        {/* UPPER SEARCH AREA */}
         <div>
-          <h1>Content for signed in users will go here</h1>
           <Container fluid>
+
             <Row>
+
+              {/* Search Places DIV */}
               <Col size="md-12">
-                <Card>
-                  <h1>Search Places</h1>
-                </Card>
-                <form>
-                  <Input
-                    value={this.state.search}
-                    onChange={this.handleInputChange}
-                    name="search"
-                    placeholder="Search for"
-                  />
-                  <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
-                    Search
-                  </FormBtn>
-                  <PoweredByGoogle />
-                </form>
-                <Card>
-                  <h1>Google Places search results</h1>
-                </Card>
+                
+                {/* SEARCH RESULTS */}
+
                 {this.state.places.length ? (
                   <List>
                     {this.state.places.map(place => (
@@ -126,13 +233,16 @@ class Dashboard extends Component {
                   <h3>No Results to Display</h3>
                 )}
               </Col>
-              {this.state.search ? (
-                <MapG search={this.state.search.replace(/ /g, '+').replace(/,/g, '')} />
-              ) : (<div></div>)}
+{/* WHERE THE MAP WAS */}
             </Row>
           </Container>
         </div>
+        {/* END SEARCH AREA 1 */}
+
+        {/* HATED LOVED AREA */}
         <div style={{ opacity: this.state.signed ? 1 : 0 }}>
+
+          {/* LOVED */}
           <Col size="md-12" >
             <Container fluid>
               <Card>
@@ -181,6 +291,9 @@ class Dashboard extends Component {
                 <h3>No Results to Display</h3>)}
             </Container>  
           </Col>
+          {/* END LOVED */}
+
+          {/* HATED AREA */}
           <Col size="md-12">
             <Container fluid>
               <Card>
@@ -239,6 +352,9 @@ class Dashboard extends Component {
                 <div></div>
               )}
           </div>
+          {/* END LOVED HATED AREA */}
+          
+          <InnerFooter />
         </div>
       );
     }

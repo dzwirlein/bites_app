@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import MapG from "../components/MapG"
+import InnerNav from "../components/InnerNav";
 import Alert from "../components/Alert"
-import PoweredByGoogle from "../components/PoweredByGoogle"
+import InnerFooter from "../components/InnerFooter";
 import SaveBtn from "../components/SaveBtn"
 
 
@@ -81,7 +81,9 @@ class LogIn extends Component {
 
   render() {
     return (
+
       <Container fluid>
+        <InnerNav />
         <br /> 
         <br />
         <br />
@@ -114,6 +116,7 @@ class LogIn extends Component {
             </Alert>
           </Col>
         </Row>
+        <InnerFooter />
       </Container>
     );
   }

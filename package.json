@@ -28,6 +28,7 @@
     "if-env": "^1.0.4",
     "mem": "^5.1.1",
     "mongoose": "^5.7.1",
+    "react-geolocated": "^3.0.1",
     "react-router-dom": "^5.0.1"
   },
   "repository": {

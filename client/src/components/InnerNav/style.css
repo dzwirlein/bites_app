@@ -1,0 +1,19 @@
+.navbar {
+    background: rgba(242, 100, 28, .8);
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Medium devices (landscape phones, larger than 768px) */
+@media (min-width: 768px) { 
+
+    .logo {
+        height: 75px;
+        width: auto;
+        margin-left: 80px;
+    }
+
+ }
