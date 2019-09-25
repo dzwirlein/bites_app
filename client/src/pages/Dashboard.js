@@ -77,6 +77,27 @@ class Dashboard extends Component {
     })
     .catch(err => console.log(err));
   }
+
+  deleteHatedPlace = id =>{
+    API.deleteHatedPlace(id, this.state.userID)
+    .then(res => {
+      console.log(res)
+      this.setState({
+        hatedplaces: res.data.swipedleft
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteLovedPlace = id =>{
+    API.deleteLovedPlace(id, this.state.userID)
+    .then(res => {
+      this.setState({        
+        lovedplaces: res.data.swipedright
+      })
+    })
+    .catch(err => console.log(err));
+  };
    
   render() {
 
@@ -267,7 +288,7 @@ class Dashboard extends Component {
                             ))}
                           </List>
                         </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                        <DeleteBtn onClick={() => this.deleteLovedPlace(place._id)} />
                           <form>
                             <TextArea
                               value={this.state.comment}
@@ -318,7 +339,7 @@ class Dashboard extends Component {
                             ))}
                           </List>
                         </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                        <DeleteBtn onClick={() => this.deleteHatedPlace(place._id)} />
                           <form>
                             <TextArea
                               value={this.state.comment}

@@ -21,6 +21,12 @@ export default {
   saveUser: function(userData) {
     return axios.get("/api/users/", {params: userData});
   },
+  deleteHatedPlace: function(id, UserID){
+    return axios.delete("/api/hatedplaces/"+id, {params: UserID})
+  },
+  deleteLovedPlace: function(id, UserID){
+    return axios.delete("/api/lovedplaces/"+id, {params: UserID})
+  },
   findUser: function(req){
     return axios.get("/api/users/:id", {
       params: req

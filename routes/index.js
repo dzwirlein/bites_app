@@ -153,10 +153,47 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/users/:id", function(req, res) {
-    db.User.deleteOne({ _id: req.params.id })
-    .then(function(dbUser) {
-      res.json(dbUser);
+  app.delete("/api/hatedplaces/:id", function(req, res) {
+    db.SwipedLeft.deleteOne({ _id: req.params.id })
+    .then(function(reqv, resp) {
+      console.log(req.query)
+      db.User.findOne({
+        _id: req.query[0]
+      })
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
+      })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(dbUser => res.json(dbUser))
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+  });
+
+  app.delete("/api/lovedplaces/:id", function(req, res) {
+    db.SwipedRight.deleteOne({ _id: req.params.id })
+    .then(function(reqv, resp) {
+      console.log(req.query[0].id)
+      db.User.findOne({
+        _id: req.query[0]
+      })
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
+      })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(dbUser => res.json(dbUser))
+    })
+    .catch(function(err) {
+      res.json(err);
     });
   });
 
