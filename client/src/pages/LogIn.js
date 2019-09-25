@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import InnerNav from "../components/InnerNav";
 import Alert from "../components/Alert"
-import InnerFooter from "../components/InnerFooter";
+
 
 import {
   withRouter
@@ -81,7 +81,7 @@ class LogIn extends Component {
               <div className="card-body">
                 <h5 className="card-title text-center font-weight-bold mb-3">LOG IN</h5>
                 <hr />
-                  <form style={{ opacity: this.state.signed ? 0 : 1 }} id="form-red">
+                  <form style={{ opacity: this.state.signed ? 0 : 1 }} >
                   <div class="form-group mb-4">
                       <small className="small-text" for="loginUsername">Username</small>
                       <Input
@@ -97,6 +97,7 @@ class LogIn extends Component {
                       <Input
                         value={this.state.password}
                         onChange={this.handleInputChange}
+                        type="password"
                         name="password"
                         placeholder="Password (required)"
                         id="loginPassword"
