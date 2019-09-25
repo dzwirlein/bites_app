@@ -3,3 +3,53 @@ body {
     background: #F2641C;
     color: white;
 }
+
+/* BUTTONS *****************************************************************/
+
+#login-text,
+#signUp {
+    font-weight: 700;
+}
+
+/* FOOTER *****************************************************************/
+
+.footer-btm {
+    position: fixed;
+    bottom: 0;
+}
+
+/* LOG IN SIGN UP FORMS **********************************************************************/
+
+.login-form {
+    border: white 4px solid;
+    background: #F2641C;
+    color: white !important;
+    max-width: 400px;
+    margin: 50px auto 0;
+}
+
+.login-form hr {
+    background-color:white;
+    border: 1px solid white;
+}
+
+.small-text {
+    text-align: left;
+}
+
+.login-form .btn.disabled,
+.login-form .btn:disabled {
+    opacity: 1 !important;
+}
+
+.btn-submit {
+    background: #5D8CBD;
+    border: 2px solid white;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn-submit:hover {
+    color: white;
+    background: #FFC773;
+}

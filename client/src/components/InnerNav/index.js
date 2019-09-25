@@ -8,7 +8,7 @@ function InnerNav () {
     return(
 
         <nav className="navbar">
-            <a className="navbar-brand" href="#home" id="home-btn">
+            <a className="navbar-brand" href="/" id="home-btn">
                 <img className="logo" src={logo} alt="bites" />
             </a>
         </nav>
