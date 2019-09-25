@@ -20,12 +20,6 @@
     box-shadow: none;
 }
 
-/* BUTTONS *****************************************************************/
-
-#login-text,
-#signUp {
-    font-weight: 700;
-}
 
 /* Medium devices (landscape phones, larger than 768px) */
 @media (min-width: 768px) { 

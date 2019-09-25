@@ -1,23 +1,24 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+import InnerNav from "../components/InnerNav"
 
 function NoMatch() {
   return (
-    <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <h1>404 Page Not Found</h1>
-            <h1>
-              <span role="img" aria-label="Face With Rolling Eyes Emoji">
-                🙄
-              </span>
-            </h1>
-          </Jumbotron>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <InnerNav />
+      <Container>
+        <Row>
+          <Col size="md-12">
+              <h1 className="display-2 my-5 text-center">404 Page Not Found</h1>
+              <h1>
+                <p className="display-2 text-center" role="img" aria-label="Face With Rolling Eyes Emoji">
+                  🙄
+                </p>
+              </h1>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

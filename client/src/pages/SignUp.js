@@ -7,7 +7,6 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Alert from "../components/Alert";
-import InnerFooter from "../components/InnerFooter";
 
 class SignUp extends Component {
   state = {
@@ -53,46 +52,50 @@ class SignUp extends Component {
 
   render() {
     return (
-      <Container fluid >
+
+      <div>
         <InnerNav />
-        <br /> <br /> <br /> <br /> <br /> <br /> <br />
-        <Row  >
-          <Col size="md-6">
-            <form style={{ opacity: this.state.signed ? 0 : 1 }}>
-              <Input
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                name="username"
-                placeholder="Username (required)"
-              />
-              <Input
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                name="password"
-                placeholder="Password (required)"
-              />
-              <FormBtn
-                disabled={!(this.state.username && this.state.password)}
-                onClick={this.handleFormSubmit}
-              >
-                Sign up
-              </FormBtn>
-            </form>
+        <Container>
+            <div className="card login-form p-3">
+              <div className="card-body">
+                <h5 className="card-title text-center font-weight-bold mb-3">SIGN UP</h5>
+                <hr />
+                  <form style={{ opacity: this.state.signed ? 0 : 1 }} >
+                  <div class="form-group mb-4">
+                      <small className="small-text" for="loginUsername">Username</small>
+                      <Input
+                        value={this.state.username}
+                        onChange={this.handleInputChange}
+                        name="username"
+                        placeholder="Enter Username (required)"
+                        id="signUpUsername"
+                      />
+                  </div>
+                  <div class="form-group mb-5">
+                      <small for="loginPassword">Password</small>
+                      <Input
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        type="password"
+                        name="password"
+                        placeholder="Password (required)"
+                        id="signUpPassword"
+                      />
+                  </div>
+                  </form>
+                  <button className="btn btn-lg btn-submit btn-block py-1"
+                    disabled={!(this.state.username && this.state.password)}
+                    onClick={this.handleFormSubmit}
+                  >Submit
+                  </button>
+              </div>
+            </div>
             <Alert style={{ opacity: this.state.alert ? 1 : 0 }} type="danger" >
-              This username is not available. Be more original.
+              This username is not available. Please try another.
               <DeleteBtn onClick={() => this.setState({alert: false})} />
             </Alert>
-          </Col>
-        </Row>
-        <div style={{ opacity: this.state.signed ? 1 : 0 }}>
-          <p>Content for first time users will go here</p>
-          <p>Bla-bla-bla. Particularly disclaimer that whilst we don't have intention to actively steal they info, our login method mainly serve the purpose to find part in database, not to secure. So no SSNs, credit cards and grandmothers maiden names, please. And Internet in general is dangerous place, whole credit bureaus are getting broken into.</p>
-          <a href="/login">
-            <h5 className="my-auto" id="login-text">And now link to Log In</h5>
-          </a>
-        </div>
-        <InnerFooter />
-      </Container>
+        </Container>
+      </div>
     );
   }
 }

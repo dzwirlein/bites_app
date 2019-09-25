@@ -13,6 +13,7 @@ import PoweredByGoogle from "../components/PoweredByGoogle";
 import SaveBtn from "../components/SaveBtn";
 import InnerNav from "../components/InnerNav";
 import InnerFooter from "../components/InnerFooter";
+import SearchListing from "../components/SearchListing";
 
 class Dashboard extends Component {
 
@@ -111,7 +112,6 @@ class Dashboard extends Component {
 
           <section className="mt-5" id="search-section">
               <div className="container rounded bg-light p-3 border-light">
-                  {/* <div className="row"> */}
                       <form className="">
                           <Input
                             value={this.state.search}
@@ -130,7 +130,6 @@ class Dashboard extends Component {
                           </FormBtn>
                           {/* <PoweredByGoogle /> */}
                     </form>
-                  {/* </div> */}
               </div>        
           </section>
 
@@ -154,37 +153,22 @@ class Dashboard extends Component {
                       </div>
                       <div class="card-body">
                         {/* RESULTS 1 DIV */}
+                        {this.state.places.length ? (
                         <div>
-                          <div className="row">
-                              <div className="col-md-4">
-                                  <p>Put Results Name Here</p>
-                              </div>
-                              <div className="col-md-8">
-                                  <p>Put Results Address Here</p>
-                              </div>
-                          </div>
-                          <div className="row mt-3">
-                              <div className="col-md-2">
-                                <p>Rating:</p>
-                                <p>Price Level:</p>
-                              </div>
-                              <div className="col-md-10">
-                                <form>
-                                  <div className="form-group">
-                                    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Comments..." rows="2"></textarea>
-                                  </div>
-                                  <button type="submit" className="btn btn-primary">Like</button>
-                                  <button type="submit" className=" mx-3 btn btn-primary">Dislike</button>
-                                  <button type="submit" className="btn btn-primary">Submit</button>
-                                </form>
-                              </div>
-                          </div>
-                          <hr />
+                          {this.state.places.map(place => (
+                          <SearchListing 
+                            key={place.id}
+place={place} />
+                          ))}
                         </div>
+                        ) : (
+                          <h3>No Results to Display</h3>
+                        )}
+                      </div>
                         {/* END RESULTS 1 DIV */}
 
                         {/* RESULTS 2 DIV */}
-                        <div>
+                        {/* <div>
                           <div className="row">
                               <div className="col-md-4">
                                   <p>Put Results Name Here</p>
@@ -210,10 +194,10 @@ class Dashboard extends Component {
                               </div>
                           </div>
                           <hr />
-                        </div>
+                        </div> */}
                         {/* END RESULTS 2 DIV */}
 
-                      </div>
+                      {/* </div> */}
                       {/* END CARD BODY */}
                   </div>
                   {/* END CARD */}
