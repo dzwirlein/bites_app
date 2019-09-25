@@ -94,18 +94,24 @@ module.exports = function(app) {
 
   app.post("/api/lovedcomment/:id", function(req, res) {
     const id = req.params.id
-    db.LovedComment.create(req.body)
+    const UserID = req.body.UserID
+    db.LovedComment.create({body: req.body.body})
     .then(function (dbLovedComment) {
       return db.SwipedRight.findOneAndUpdate({ _id: id }, { $push: { lovedcomment: dbLovedComment._id }}, { new: true });
     })
-    .then(function(reqv, rep) {
-      db.SwipedRight.findOne({
-        _id: id
+    .then(function(dbSwipedRight) {
+      db.User.findOne({
+        _id: UserID
       })
-      .populate("lovedcomment")
-      .then(function(dbSwipedRight) {
-        res.json(dbSwipedRight);
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
       })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(dbUser => res.json(dbUser))
     })
     .catch(function(err) {
       res.json(err);
@@ -114,18 +120,24 @@ module.exports = function(app) {
 
   app.post("/api/hatedcomment/:id", function(req, res) {
     const id = req.params.id
-    db.HatedComment.create(req.body)
+    const UserID = req.body.UserID
+    db.HatedComment.create({body: req.body.body})
     .then(function (dbHatedComment) {
       return db.SwipedLeft.findOneAndUpdate({ _id: id }, { $push: { hatedcomment: dbHatedComment._id }}, { new: true });
     })
-    .then(function(reqv, rep) {
-        db.SwipedLeft.findOne({
-          _id: id
-        })
-      .populate("hatedcomment")
-      .then(function(dbSwipedLeft) {
-        res.json(dbSwipedLeft);
+    .then(function(dbSwipedLeft) {
+      db.User.findOne({
+        _id: UserID
       })
+      .populate({
+        path: 'swipedleft',
+        populate: { path: 'hatedcomment' }
+      })
+      .populate({
+        path: 'swipedright',
+        populate: { path: 'lovedcomment' }
+      })
+      .then(dbUser => res.json(dbUser))
     })
     .catch(function(err) {
       res.json(err);
@@ -156,7 +168,6 @@ module.exports = function(app) {
   app.delete("/api/hatedplaces/:id", function(req, res) {
     db.SwipedLeft.deleteOne({ _id: req.params.id })
     .then(function(reqv, resp) {
-      console.log(req.query)
       db.User.findOne({
         _id: req.query[0]
       })
@@ -178,7 +189,6 @@ module.exports = function(app) {
   app.delete("/api/lovedplaces/:id", function(req, res) {
     db.SwipedRight.deleteOne({ _id: req.params.id })
     .then(function(reqv, resp) {
-      console.log(req.query[0].id)
       db.User.findOne({
         _id: req.query[0]
       })

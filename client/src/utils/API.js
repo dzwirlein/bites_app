@@ -6,11 +6,11 @@ export default {
       params: req
     });
   },
-  postHatedComment: function(id, comment){
-    return axios.post("/api/hatedcomment/"+id, {body: comment});
+  postHatedComment: function(id, comment, UserID){
+    return axios.post("/api/hatedcomment/"+id, {body: comment, UserID: UserID});
   },
-  postLovedComment: function(id, comment){
-    return axios.post("/api/lovedcomment/"+id, {body: comment});
+  postLovedComment: function(id, comment, UserID){
+    return axios.post("/api/lovedcomment/"+id, {body: comment, UserID: UserID});
   },
   hatePlace: function(id, place) {
     return axios.post("/api/swipedleft/"+id, place);

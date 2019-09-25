@@ -57,9 +57,10 @@ class Dashboard extends Component {
   handleHatedCommentSubmit = event => {
     event.preventDefault();
     const id = event.target.id
-    API.postHatedComment(id, this.state.comment)
+    API.postHatedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({     
+      this.setState({
+        hatedplaces: res.data.swipedleft,    
         comment: ""
       })
     })
@@ -69,9 +70,10 @@ class Dashboard extends Component {
   handleLovedCommentSubmit = event => {
     const id = event.target.id
     event.preventDefault();
-    API.postLovedComment(id, this.state.comment)
+    API.postLovedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({        
+      this.setState({
+        lovedplaces: res.data.swipedright,        
         comment: ""
       })
     })
@@ -81,7 +83,6 @@ class Dashboard extends Component {
   deleteHatedPlace = id =>{
     API.deleteHatedPlace(id, this.state.userID)
     .then(res => {
-      console.log(res)
       this.setState({
         hatedplaces: res.data.swipedleft
       })
