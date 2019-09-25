@@ -57,9 +57,10 @@ class Dashboard extends Component {
   handleHatedCommentSubmit = event => {
     event.preventDefault();
     const id = event.target.id
-    API.postHatedComment(id, this.state.comment)
+    API.postHatedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({     
+      this.setState({
+        hatedplaces: res.data.swipedleft,    
         comment: ""
       })
     })
@@ -69,14 +70,35 @@ class Dashboard extends Component {
   handleLovedCommentSubmit = event => {
     const id = event.target.id
     event.preventDefault();
-    API.postLovedComment(id, this.state.comment)
+    API.postLovedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({        
+      this.setState({
+        lovedplaces: res.data.swipedright,        
         comment: ""
       })
     })
     .catch(err => console.log(err));
   }
+
+  deleteHatedPlace = id =>{
+    API.deleteHatedPlace(id, this.state.userID)
+    .then(res => {
+      this.setState({
+        hatedplaces: res.data.swipedleft
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteLovedPlace = id =>{
+    API.deleteLovedPlace(id, this.state.userID)
+    .then(res => {
+      this.setState({        
+        lovedplaces: res.data.swipedright
+      })
+    })
+    .catch(err => console.log(err));
+  };
    
   render() {
 
@@ -267,7 +289,7 @@ class Dashboard extends Component {
                             ))}
                           </List>
                         </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                        <DeleteBtn onClick={() => this.deleteLovedPlace(place._id)} />
                           <form>
                             <TextArea
                               value={this.state.comment}
@@ -318,7 +340,7 @@ class Dashboard extends Component {
                             ))}
                           </List>
                         </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                        <DeleteBtn onClick={() => this.deleteHatedPlace(place._id)} />
                           <form>
                             <TextArea
                               value={this.state.comment}
