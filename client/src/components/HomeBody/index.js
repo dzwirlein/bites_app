@@ -4,12 +4,14 @@ import Section1 from "./images/create-section1.jpg";
 import Share from "./images/share-section1.jpg";
 
 
+
 function HomeBody() {
 
     return(
 
     <div>
     
+
         <div className="jumbotron jumbotron-fluid mb-0">
         <div className="dark-overlay">
             <div className="jumbo-inner container">

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+import InnerNav from "../components/InnerNav"
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Alert from "../components/Alert";
+import InnerFooter from "../components/InnerFooter";
 
 class SignUp extends Component {
   state = {
@@ -53,6 +54,7 @@ class SignUp extends Component {
   render() {
     return (
       <Container fluid >
+        <InnerNav />
         <br /> <br /> <br /> <br /> <br /> <br /> <br />
         <Row  >
           <Col size="md-6">
@@ -89,6 +91,7 @@ class SignUp extends Component {
             <h5 className="my-auto" id="login-text">And now link to Log In</h5>
           </a>
         </div>
+        <InnerFooter />
       </Container>
     );
   }
