@@ -4,6 +4,24 @@ body {
     color: white;
 }
 
+.scrollable {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.list-group-item {
+    border: none !important;
+}
+
+.list-overflow-container {
+    margin-bottom: 10px !important;
+}
+
+#history-map {
+    width: 100%;
+    height: 600px;
+}
+
 /* BUTTONS *****************************************************************/
 
 #login-text,

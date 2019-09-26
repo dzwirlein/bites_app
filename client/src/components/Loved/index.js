@@ -4,7 +4,7 @@ import SaveBtn from "../SaveBtn";
 import DeleteBtn from "../DeleteBtn";
 
 
-function Loved(props) {
+export function LovedInfo(props) {
     
     const name = props.place.name;
     const address = props.place.formatted_address;
@@ -12,46 +12,53 @@ function Loved(props) {
     const level = props.place.price_level;
 
     return (
+
       <div>
-          <div className="row">
-              <div className="col-md-4">
-                  <p> {name}</p>
-              </div>
-              <div className="col-md-8">
-                  <p >{address}</p>
-              </div>
+          <div className="d-flex flex-row bd-highlight mb-3">
+              <div class="p-2 bd-highlight"> {name}</div>
+              <div class="p-2 bd-highlight">{address}</div>
+              <div class="p-2 bd-highlight">Rating: {rating}</div>
+              <div class="p-2 bd-highlight">Price Level: {level}</div>
           </div>
-          <div className="row mt-3">
-              <div className="col-md-2">
-                <p>Rating: {rating}</p>
-                <p>Price Level: {level}</p>
-              </div>
-              <div className="col-md-10">
-                <form>
-                  <div className="form-group">
-                    <textarea 
-                        className="form-control" 
-                        id="exampleFormControlTextarea1" 
-                        value={this.state.comment}
-                        onChange={this.handleInputChange}
-                        name="comment"
-                        placeholder="Comments..."
-                        rows="2">
-                    </textarea>
-                  </div>
-                  <FormBtn
-                    disabled={!(this.state.comment)}
-                    id={props.place._id}
-                    onClick={this.handleLovedCommentSubmit}
-                  >
-                    Submit Comment
-                  </FormBtn>
-                </form>
-              </div>
-          </div>
-        <hr />
       </div>
     )
   }
 
-  export default Loved;
+  // export function LovedComment(props) {
+
+  //   return (
+  //     <>
+  //         <div className="row mt-3">
+  //           {props.place.lovedcomment.map(comment =>(
+  //             <div className="col-md-6" key={comment._id}>
+  //               <p> {comment.body}</p>
+  //             </div>
+  //           ))}
+  //             <div className="col-md-6">
+  //                 <form>
+  //                     <div className="form-group">
+  //                         <textarea 
+  //                             className="form-control" 
+  //                             id="exampleFormControlTextarea1" 
+  //                             value={this.state.comment}
+  //                             onChange={this.handleInputChange}
+  //                             name="comment"
+  //                             placeholder="Comments..."
+  //                             rows="2">
+  //                         </textarea>
+  //                     </div>
+  //                 </form>
+  //                 <FormBtn
+  //                   disabled={!(this.state.comment)}
+  //                   id={props.place._id}
+  //                   onClick={this.handleLovedCommentSubmit}
+  //                 >
+  //                   Submit Comment
+  //                 </FormBtn>
+  //                 <DeleteBtn onClick={() => this.deletePlace(props.place._id)} />
+  //             </div>
+  //         <hr />
+  //         </div>
+  //     </>
+  //   )              
+  // }

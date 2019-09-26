@@ -3,7 +3,7 @@ import logo from "./powered_by_google_on_white.png"
 
 function PoweredByGoogle() {
   return (
-    <img src={logo}  alt="PoweredByGoogle logo" />
+    <img src={logo} className="float-right mt-2" alt="PoweredByGoogle logo" />
   );
 }
 
