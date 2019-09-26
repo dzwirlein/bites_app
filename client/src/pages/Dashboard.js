@@ -15,7 +15,8 @@ import InnerNav from "../components/InnerNav";
 import InnerFooter from "../components/InnerFooter";
 import SearchListing from "../components/SearchListing";
 import ResultsTable from "../components/ResultsTable";
-import { LovedInfo, LovedComment } from "../components/Loved"
+import { LovedInfo } from "../components/Loved";
+// import LovedComment from "../components/LovedComment";
 
 class Dashboard extends Component {
 
@@ -161,7 +162,7 @@ class Dashboard extends Component {
 
 {/* LOVED SECTION */}
 
-          <section className="my-3" id="results-section">
+          {/* <section className="my-3" id="results-section">
               <div className="container bg-light rounded p-4">
                   <div className="card my-0">
                       <div className="card-header">
@@ -176,149 +177,153 @@ class Dashboard extends Component {
                                       key={place.id}
                                       place={place}
                                   />
+                                  // <LovedComment
+                                  //     key={place.id}
+                                  //     place={place}
+                                  // />
                                 ))}
                             </div>
                             ) : (
                                 <h3>No Results to Display</h3>
                             )}
                         </div>
-                        <div className="row">
-                            {this.state.lovedplaces.length ? (
-                                <div>
-                                    {this.state.lovedplaces.map(place => (
-                                      <LovedInfo 
-                                          key={place.id}
-                                          place={place}
-                                      />
-                                    ))}
-                                </div>
-                            ) : (
-                                <h3>No Results to Display</h3>
-                            )}                      
-                        </div>
                       </div>
                   </div>
               </div>
-          </section>
+          </section> */}
 
 {/* END LOVED SECTION */}
 
         {/* HATED LOVED AREA */}
-        <div style={{ opacity: this.state.signed ? 1 : 0 }}>
 
-          {/* LOVED */}
-          <Col size="md-12" >
-            <Container fluid>
-              {this.state.lovedplaces.length ? (
-                <List>
+        {/* HISTORY MAP */}
+
+        <section className="mt-5 mb-3" id="map-section">
+            <div className="container rounded bg-light p-3">
+                <div id="history-map">
+                    {(this.state.hatedplaces.length||this.state.lovedplaces.length) ? (
+                      <MapMarkers
+                        lovedplaces={this.state.lovedplaces}
+                        hatedplaces={this.state.hatedplaces}
+                      />
+                    ): (
+                      <div></div>
+                    )}
+                </div>
+            </div>
+        </section>
+
+        {/* END HISTORY MAP */}
+
+        {/* LOVED */}
+        <section className="my-3" id="loved-section">
+          <div className="container bg-light rounded p-4 section-div">
+            <div className="card my-0">
+              <div className="card-header">
+                  Loved Restaurants
+              </div>
+              <div className="card-body">
+                {this.state.lovedplaces.length ? (
+                <div>
                   {this.state.lovedplaces.map(place => (
                     <ListItem key={place._id}>
-                      <Container>
-                        <Card>
-                          {place.name}
-                        </Card>
-                        <Card>
-                          <List>
-                            {place.lovedcomment.map(comment =>(
-                              <ListItem key={comment._id}>
-                                <Card>
-                                  Comment: {comment.body}
-                                </Card>
-                              </ListItem>
-                            ))}
-                          </List>
-                        </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
-                          <form>
-                            <TextArea
-                              value={this.state.comment}
-                              onChange={this.handleInputChange}
-                              name="comment"
-                              placeholder="What is so good about it?"
-                            />
-                            <FormBtn
-                              disabled={!(this.state.comment)}
-                              id={place._id}
-                              onClick={this.handleLovedCommentSubmit}
-                            >
-                              Submit Comment
-                            </FormBtn>
-                          </form>
-                        </Container>
+                      <h3>{place.name}</h3>
+                      <List>
+                        {place.lovedcomment.map(comment =>(
+                        <ListItem key={comment._id}>
+                          <Card>
+                            Comment: {comment.body}
+                            
+                          </Card>
                         </ListItem>
+                        ))}
+                      </List>
+                      <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                      <form>
+                        <TextArea
+                          value={this.state.comment}
+                          onChange={this.handleInputChange}
+                          name="comment"
+                          placeholder="What is so good about it?"
+                        />
+                        <FormBtn
+                          disabled={!(this.state.comment)}
+                          id={place._id}
+                          onClick={this.handleLovedCommentSubmit}
+                        >
+                          Submit Comment
+                        </FormBtn>
+                      </form>
+                      <hr />
+                    </ListItem>
                   ))}
-                </List>
-              ): (
-                <h3>No Results to Display</h3>)}
-            </Container>  
-          </Col>
-          {/* END LOVED */}
-
-          {/* HATED AREA */}
-          <Col size="md-12">
-            <Container fluid>
-              <Card>
-                <h1>Hated Places</h1>
-              </Card>
-              {this.state.hatedplaces.length ? (
-                <List>
-                  {this.state.hatedplaces.map(place => (
-                    <ListItem key={place._id}>
-                      <div>
-                        <Card>
-                          {place.name}
-                        </Card>
-                        <Card>
-                          <List>
-                            {place.hatedcomment.map(comment =>(
-                              <ListItem key={comment._id}>
-                                <Card>
-                                  Comment: {comment.body}
-                                </Card>
-                              </ListItem>
-                            ))}
-                          </List>
-                        </Card>
-                        <DeleteBtn onClick={() => this.deletePlace(place._id)} />
-                          <form>
-                            <TextArea
-                              value={this.state.comment}
-                              onChange={this.handleInputChange}
-                              name="comment"
-                              placeholder="Why did you hate it?"
-                            />
-                            <FormBtn
-                              disabled={!(this.state.comment)}
-                              id={place._id}
-                              onClick={this.handleHatedCommentSubmit}
-                            >
-                              Submit Comment
-                            </FormBtn>
-                          </form>
-                        </div>
-                      </ListItem>
-                    ))}
-                  </List>
+                </div>
                 ): (
-                  <h3>No Results to Display</h3>
-                )}
-              </Container> 
-            </Col>
-            {(this.state.hatedplaces.length||this.state.lovedplaces.length) ? (
-              <MapMarkers
-                lovedplaces={this.state.lovedplaces}
-                hatedplaces={this.state.hatedplaces}
-              />
-              ): (
-                <div></div>
-              )}
-          </div>
-          {/* END LOVED HATED AREA */}
+                <h3>No Results to Display</h3>)}
+              </div>
+            </div>
+          </div>          
+        </section>
+
+        {/* END LOVED */}
+
+        {/* HATED AREA */}
+
+        <section className="my-3" id="loved-section">
+          <div className="container bg-light rounded p-4 section-div">
+            <div className="card my-0">
+              <div className="card-header">
+                  Hated Restaurants
+              </div>
+              <div className="card-body">
+              {this.state.hatedplaces.length ? (
+                <div>
+                   {this.state.hatedplaces.map(place => (
+                    <ListItem key={place._id}>
+                      <h3>{place.name}</h3>
+                      <List>
+                      {place.hatedcomment.map(comment =>(
+                        <ListItem key={comment._id}>
+                          <Card>
+                            Comment: {comment.body}
+                            
+                          </Card>
+                        </ListItem>
+                        ))}
+                      </List>
+                      <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                      <form>
+                        <TextArea
+                          value={this.state.comment}
+                          onChange={this.handleInputChange}
+                          name="comment"
+                          placeholder="What is so good about it?"
+                        />
+                        <FormBtn
+                          disabled={!(this.state.comment)}
+                          id={place._id}
+                          onClick={this.handleHatedCommentSubmit}
+                        >
+                          Submit Comment
+                        </FormBtn>
+                      </form>
+                      <hr />
+                    </ListItem>
+                  ))}
+                </div>
+                ): (
+                <h3>No Results to Display</h3>)}
+              </div>
+            </div>
+          </div>          
+        </section>
+
+        {/* END HATED AREA */}
           
-          <InnerFooter />
-        </div>
-      );
-    }
+        <InnerFooter />
+      </div>
+    );
   }
+}
 
 export default Dashboard;
