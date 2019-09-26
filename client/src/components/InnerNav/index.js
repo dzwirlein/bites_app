@@ -13,7 +13,7 @@ function InnerNav () {
             </a>
             <ul className="d-inline my-auto" id="nav-btns">
                 <li className="nav-item">
-                    <a className="btn" href="/signup" id="signUp-btn-1">
+                    <a className="btn" href="/login" id="signUp-btn-1">
                         <h5 className="my-auto" id="signUp">Sign Out</h5>
                     </a>
                 </li>

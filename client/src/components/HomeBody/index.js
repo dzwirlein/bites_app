@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
-import Section1 from "./images/create-section1.jpg";
-import Share from "./images/share-section1.jpg";
+import Section1 from "./images/Restaurant1.jpg";
+import Share from "./images/FriendsDinner.jpg";
 
 
 
@@ -43,7 +43,7 @@ function HomeBody() {
                 <div className="col text-center py-5">
                     <h1 className="display-4">Why Use Bites</h1>
                     <p className="lead">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores numquam fugiat veniam sapiente ipsam mollitia pariatur minus, ea, accusantium est laudantium alias, amet tenetur aspernatur ipsa nostrum similique accusamus dolor.
+                    Bites allows you to keep track of all of your favorite foods and restaurants. If you liked or hated your last meal out, Bites will remember and allow you to filter based on your history.
                     </p>
                 </div>
             </div>
@@ -59,14 +59,14 @@ function HomeBody() {
                 </div>
                 <div className="col-md-6 order-1">
                     <h3>Reason Number 1</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolor atque a adipisci sapiente sequi odio aperiam eveniet doloribus dolore corporis beatae commodi maiores vero reprehenderit aut voluptatibus, delectus iste!.
+                    <p>You get to rate your favorite eats! Keep track of the last time that meal hit the perfect spot or the last time you had a bad experience. Bites will save and store your information every time you go out to eat. 
                     </p>
                     <div className="d-flex">
                         <div className="p-4 align-self-start">
                             <i className="fas fa-check fa-2x"></i>
                         </div>
                         <div className="p-4 align-self-end">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima incidunt commodi, tenetur nihil maiores dolorem at reiciendis eaque officia laudantium repellat, veniam, sapiente reprehenderit eius iusto alias placeat? Assumenda, fuga!
+                        With our location mapping, you get to search for the restaurants you want to keep track of. If you liked your last meal, we will let you know about similar foods in the area. Maybe you will find a new place you’ve never been to?
                         </div>
                     </div>
                     <div className="d-flex">
@@ -74,7 +74,7 @@ function HomeBody() {
                             <i className="fas fa-check fa-2x"></i>
                         </div>
                         <div className="p-4 align-self-end">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima incidunt commodi, tenetur nihil maiores dolorem at reiciendis eaque officia laudantium repellat, veniam, sapiente reprehenderit eius iusto alias placeat? Assumenda, fuga!
+                        If you went to a restaurant and hated it, we will make sure you don’t have that experience again. This works great for picky eaters. It’s easy to find if a restaurant doesn’t serve gluten-free, vegetarian/vegan options, or other dietary restrictions.
                         </div>
                     </div>
                 </div>                
@@ -88,9 +88,9 @@ function HomeBody() {
         <div className="container">
             <div className="row">
                 <div className="col text-center py-5">
-                    <h1 className="display-4">More Info About Bites</h1>
+                    <h1 className="display-4">Private and Discrete</h1>
                     <p className="lead">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores numquam fugiat veniam sapiente ipsam mollitia pariatur minus, ea, accusantium est laudantium alias, amet tenetur aspernatur ipsa nostrum similique accusamus dolor.
+                    With Bites, your account in personal and private. Don’t worry about hurting anyone’s feelings if you had a crappy experience at your local pub one night. All the locations you’ve been and rated meals will be stored in your account ONLY and will not be shared online.
                     </p>
                 </div>
             </div>
@@ -106,14 +106,14 @@ function HomeBody() {
                 </div>
                 <div className="col-md-6">
                     <h3>Reason Number 2</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolor atque a adipisci sapiente sequi odio aperiam eveniet doloribus dolore corporis beatae commodi maiores vero reprehenderit aut voluptatibus, delectus iste!.
+                    <p> Sick and tired of going to the same place to eat every weekend? Bites will help you find your new favorite place to eat.
                     </p>
                     <div className="d-flex">
                         <div className="p-4 align-self-start">
                             <i className="fas fa-check fa-2x"></i>
                         </div>
                         <div className="p-4 align-self-end">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima incidunt commodi, tenetur nihil maiores dolorem at reiciendis eaque officia laudantium repellat, veniam, sapiente reprehenderit eius iusto alias placeat? Assumenda, fuga!
+                        Enter what you are in the mood for and Bites will use your location to give you the best results!
                         </div>
                     </div>
                     <div className="d-flex">
@@ -121,7 +121,7 @@ function HomeBody() {
                             <i className="fas fa-check fa-2x"></i>
                         </div>
                         <div className="p-4 align-self-end">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima incidunt commodi, tenetur nihil maiores dolorem at reiciendis eaque officia laudantium repellat, veniam, sapiente reprehenderit eius iusto alias placeat? Assumenda, fuga!
+                        Make return trips to places you love or become the go to person to give recomendations to friends and family. 
                         </div>
                     </div>
                 </div>                

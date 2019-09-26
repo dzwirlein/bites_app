@@ -164,12 +164,13 @@ class Dashboard extends Component {
                                         <th scope="col">Hate</th>
                                     </tr>
                                 </thead>
-                                {this.state.places.map(place => (
+                                {this.state.places.map((place,index) => (
                                     <ResultsTable 
+                                        index={index}
                                         key={place.id}
                                         place={place}
                                     />
-                                ))}
+                        ))}
                             </table>
                         ) : (
                            <h3>No Results to Display</h3>
