@@ -25,7 +25,11 @@ class SignUp extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
+    if (!this.state.username || !this.state.password) {
+      alert("Fill out username and password");
+    } else if (this.state.password.length < 6) {
+      alert(`Password must be atleast 6 characters in length ${this.state.username}`)
+    } else {
       API.saveUser({
         username: this.state.username,
         password: this.state.password

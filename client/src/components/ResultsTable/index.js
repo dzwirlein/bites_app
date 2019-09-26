@@ -10,13 +10,13 @@ function ResultsTable(props) {
     const address = props.place.formatted_address;
     const rating = props.place.rating;
     const level = props.place.price_level;
-    const resultsNum = props.key;
+    const index = props.index + 1;
 
     return (
 
         <tbody>
             <tr>
-                <th scope="row">{resultsNum}</th>
+                <th scope="row">{index}</th>
                 <td>{name}</td>
                 <td>{address}</td>
                 <td>{rating}</td>
