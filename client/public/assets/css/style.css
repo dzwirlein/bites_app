@@ -4,7 +4,7 @@ body {
     color: white;
 }
 
-.section-div .card-body {
+.scrollable {
     max-height: 300px;
     overflow-y: scroll;
 }

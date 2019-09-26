@@ -4,14 +4,13 @@ import "./style.css";
 function Card({children}) {
 
     return(
- 
-<div className="card">
-  <div className="card-body" style={{ height: 200, clear: "both", textAlign: "center"}}>
-      {children}
-  </div>
-</div>
-
-
+        
+        <div className="">
+            <p className="">
+                {children}
+            </p>
+            <hr />
+        </div>
 
     )
 }

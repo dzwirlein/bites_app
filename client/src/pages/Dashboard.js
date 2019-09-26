@@ -95,16 +95,17 @@ class Dashboard extends Component {
             <div className="container rounded bg-light p-3 border-light">
                 <form className="">
                     <Input
-                      value={this.state.search}
-                      onChange={this.handleInputChange}
-                      name="search"
-                      placeholder="Search for"
+                        value={this.state.search}
+                        onChange={this.handleInputChange}
+                        name="search"
+                        placeholder="Search for"
                     />
                 </form>
-                    <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
-                      Search
-                    </FormBtn>
-                    <PoweredByGoogle />
+                <FormBtn
+                    disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
+                    Search
+                </FormBtn>
+                <PoweredByGoogle />
             </div>        
         </section>
 
@@ -121,12 +122,12 @@ class Dashboard extends Component {
 {/* RESULTS TABLE */}
 
         <section className="my-3" id="results-section">
-            <div className="container bg-light rounded p-4">
+            <div className="container bg-light rounded p-4 section-div">
                 <div className="card my-0">
                     <div className="card-header">
                         Search Results
                     </div>
-                    <div className="card-body">
+                    <div className="card-body scrollable">
                         {/* RESULTS 1 DIV */}
                         {this.state.places.length ? (
                             <table className="table">
@@ -222,7 +223,7 @@ class Dashboard extends Component {
               <div className="card-header">
                   Loved Restaurants
               </div>
-              <div className="card-body">
+              <div className="card-body scrollable">
                 {this.state.lovedplaces.length ? (
                 <div>
                   {this.state.lovedplaces.map(place => (
@@ -232,8 +233,7 @@ class Dashboard extends Component {
                         {place.lovedcomment.map(comment =>(
                         <ListItem key={comment._id}>
                           <Card>
-                            Comment: {comment.body}
-                            
+                            Comment: {comment.body}                            
                           </Card>
                         </ListItem>
                         ))}
@@ -275,7 +275,7 @@ class Dashboard extends Component {
               <div className="card-header">
                   Hated Restaurants
               </div>
-              <div className="card-body">
+              <div className="card-body scrollable">
               {this.state.hatedplaces.length ? (
                 <div>
                    {this.state.hatedplaces.map(place => (
