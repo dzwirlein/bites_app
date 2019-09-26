@@ -99,11 +99,11 @@ class Dashboard extends Component {
                       name="search"
                       placeholder="Search for"
                     />
+                </form>
                     <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
                       Search
                     </FormBtn>
                     <PoweredByGoogle />
-              </form>
             </div>        
         </section>
 
@@ -168,24 +168,34 @@ class Dashboard extends Component {
                           Loved Restaurants
                       </div>
                       <div className="card-body">
-                          {this.state.lovedplaces.length ? (
-                          <div>
-                              {this.state.lovedplaces.map(place => (
-                                <LovedInfo 
-                                    key={place.id}
-                                    place={place}
-                                />
-
-                                // <LovedComment 
-                                //     key={place.id}
-                                //     place={place}
-                                // />
-
-                              ))}v
-                          </div>
-                          ) : (
-                              <h3>No Results to Display</h3>
-                          )}
+                        <div className="row">
+                            {this.state.lovedplaces.length ? (
+                            <div>
+                                {this.state.lovedplaces.map(place => (
+                                  <LovedInfo 
+                                      key={place.id}
+                                      place={place}
+                                  />
+                                ))}
+                            </div>
+                            ) : (
+                                <h3>No Results to Display</h3>
+                            )}
+                        </div>
+                        <div className="row">
+                            {this.state.lovedplaces.length ? (
+                                <div>
+                                    {this.state.lovedplaces.map(place => (
+                                      <LovedInfo 
+                                          key={place.id}
+                                          place={place}
+                                      />
+                                    ))}
+                                </div>
+                            ) : (
+                                <h3>No Results to Display</h3>
+                            )}                      
+                        </div>
                       </div>
                   </div>
               </div>
