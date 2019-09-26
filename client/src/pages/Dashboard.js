@@ -61,9 +61,10 @@ class Dashboard extends Component {
   handleHatedCommentSubmit = event => {
     event.preventDefault();
     const id = event.target.id
-    API.postHatedComment(id, this.state.comment)
+    API.postHatedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({     
+      this.setState({
+        hatedplaces: res.data.swipedleft,    
         comment: ""
       })
     })
@@ -73,14 +74,35 @@ class Dashboard extends Component {
   handleLovedCommentSubmit = event => {
     const id = event.target.id
     event.preventDefault();
-    API.postLovedComment(id, this.state.comment)
+    API.postLovedComment(id, this.state.comment, this.state.userID)
     .then(res => {
-      this.setState({        
+      this.setState({
+        lovedplaces: res.data.swipedright,        
         comment: ""
       })
     })
     .catch(err => console.log(err));
   }
+
+  deleteHatedPlace = id =>{
+    API.deleteHatedPlace(id, this.state.userID)
+    .then(res => {
+      this.setState({
+        hatedplaces: res.data.swipedleft
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteLovedPlace = id =>{
+    API.deleteLovedPlace(id, this.state.userID)
+    .then(res => {
+      this.setState({        
+        lovedplaces: res.data.swipedright
+      })
+    })
+    .catch(err => console.log(err));
+  };
    
   render() {
 
@@ -228,6 +250,7 @@ class Dashboard extends Component {
                 <div>
                   {this.state.lovedplaces.map(place => (
                     <ListItem key={place._id}>
+
                       <h3>{place.name}</h3>
                       <List>
                         {place.lovedcomment.map(comment =>(
@@ -235,6 +258,7 @@ class Dashboard extends Component {
                           <Card>
                             Comment: {comment.body}                            
                           </Card>
+
                         </ListItem>
                         ))}
                       </List>
@@ -280,6 +304,7 @@ class Dashboard extends Component {
                 <div>
                    {this.state.hatedplaces.map(place => (
                     <ListItem key={place._id}>
+
                       <h3>{place.name}</h3>
                       <List>
                       {place.hatedcomment.map(comment =>(
