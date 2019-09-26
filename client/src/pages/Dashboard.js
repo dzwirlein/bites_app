@@ -14,6 +14,8 @@ import SaveBtn from "../components/SaveBtn";
 import InnerNav from "../components/InnerNav";
 import InnerFooter from "../components/InnerFooter";
 import SearchListing from "../components/SearchListing";
+import ResultsTable from "../components/ResultsTable";
+import { LovedInfo, LovedComment } from "../components/Loved"
 
 class Dashboard extends Component {
 
@@ -88,140 +90,108 @@ class Dashboard extends Component {
 
  {/* SEARCH BAR */}
 
-          <section className="mt-5" id="search-section">
-              <div className="container rounded bg-light p-3 border-light">
-                      <form className="">
-                          <Input
-                            value={this.state.search}
-                            onChange={this.handleInputChange}
-                            name="search"
-                            placeholder="Search for"
-                          />
-                          <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
-                            Search
-                          </FormBtn>
-                          <FormBtn>
-                            Random Suggestion
-                          </FormBtn>
-                          <FormBtn>
-                            History
-                          </FormBtn>
-                          {/* <PoweredByGoogle /> */}
-                    </form>
-              </div>        
-          </section>
+        <section className="mt-5" id="search-section">
+            <div className="container rounded bg-light p-3 border-light">
+                <form className="">
+                    <Input
+                      value={this.state.search}
+                      onChange={this.handleInputChange}
+                      name="search"
+                      placeholder="Search for"
+                    />
+                    <FormBtn disabled={!(this.state.search)}onClick={this.handleSearchSubmit}>
+                      Search
+                    </FormBtn>
+                    <PoweredByGoogle />
+              </form>
+            </div>        
+        </section>
 
 {/* END SEARCH BAR */}
 
 {/* MAP */}
 
-          {this.state.search ? (
-            <MapG search={this.state.search.replace(/ /g, '+').replace(/,/g, '')} />
-          ) : (<MapG search="Milwaukee, WI"/>)}
+        {this.state.search ? (
+          <MapG search={this.state.search.replace(/ /g, '+').replace(/,/g, '')} />
+        ) : (<MapG search="Milwaukee, WI"/>)}
     
 {/* END MAP */}
 
-{/* RESULTS SECTION */}
+{/* RESULTS TABLE */}
+
+        <section className="my-3" id="results-section">
+            <div className="container bg-light rounded p-4">
+                <div className="card my-0">
+                    <div className="card-header">
+                        Search Results
+                    </div>
+                    <div className="card-body">
+                        {/* RESULTS 1 DIV */}
+                        {this.state.places.length ? (
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Rating</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Love</th>
+                                        <th scope="col">Hate</th>
+                                    </tr>
+                                </thead>
+                                {this.state.places.map(place => (
+                                    <ResultsTable 
+                                        key={place.id}
+                                        place={place}
+                                    />
+                                ))}
+                            </table>
+                        ) : (
+                           <h3>No Results to Display</h3>
+                        )}
+                    </div>
+                    {/* END RESULTS 1 DIV */}
+                </div>
+                {/* END CARD */}
+            </div>
+        </section>
+
+{/* END RESULTS TABLE */}
+
+{/* LOVED SECTION */}
 
           <section className="my-3" id="results-section">
               <div className="container bg-light rounded p-4">
-                  <div class="card my-0">
-                      <div class="card-header">
-                          Search Results
+                  <div className="card my-0">
+                      <div className="card-header">
+                          Loved Restaurants
                       </div>
-                      <div class="card-body">
-                        {/* RESULTS 1 DIV */}
-                        {this.state.places.length ? (
-                        <div>
-                          {this.state.places.map(place => (
-                          <SearchListing 
-                            key={place.id}
-place={place} />
-                          ))}
-                        </div>
-                        ) : (
-                          <h3>No Results to Display</h3>
-                        )}
+                      <div className="card-body">
+                          {this.state.lovedplaces.length ? (
+                          <div>
+                              {this.state.lovedplaces.map(place => (
+                                <LovedInfo 
+                                    key={place.id}
+                                    place={place}
+                                />
+
+                                // <LovedComment 
+                                //     key={place.id}
+                                //     place={place}
+                                // />
+
+                              ))}v
+                          </div>
+                          ) : (
+                              <h3>No Results to Display</h3>
+                          )}
                       </div>
-                        {/* END RESULTS 1 DIV */}
-
-                        {/* RESULTS 2 DIV */}
-                        {/* <div>
-                          <div className="row">
-                              <div className="col-md-4">
-                                  <p>Put Results Name Here</p>
-                              </div>
-                              <div className="col-md-8">
-                                  <p>Put Results Address Here</p>
-                              </div>
-                          </div>
-                          <div className="row mt-3">
-                              <div className="col-md-2">
-                                <p>Rating:</p>
-                                <p>Price Level:</p>
-                              </div>
-                              <div className="col-md-10">
-                                <form>
-                                  <div className="form-group">
-                                    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Comments..." rows="2"></textarea>
-                                  </div>
-                                  <button type="submit" className="btn btn-primary">Like</button>
-                                  <button type="submit" className=" mx-3 btn btn-primary">Dislike</button>
-                                  <button type="submit" className="btn btn-primary">Submit</button>
-                                </form>
-                              </div>
-                          </div>
-                          <hr />
-                        </div> */}
-                        {/* END RESULTS 2 DIV */}
-
-                      {/* </div> */}
-                      {/* END CARD BODY */}
                   </div>
-                  {/* END CARD */}
               </div>
           </section>
 
-{/* END RESULTS SECTION */}
-
-        {/* UPPER SEARCH AREA */}
-        <div>
-          <Container fluid>
-
-            <Row>
-
-              {/* Search Places DIV */}
-              <Col size="md-12">
-                
-                {/* SEARCH RESULTS */}
-
-                {this.state.places.length ? (
-                  <List>
-                    {this.state.places.map(place => (
-                      <ListItem key={place.id}>
-                          <Card>
-                            <strong>
-                              {place.name} at {place.formatted_address}
-                              <br />
-                            </strong>
-                            <p>Rating: {place.rating}</p>
-                            <p>Price level: {place.price_level}</p>
-                            <br />
-                          </Card>
-                          <SaveBtn onClick={() => this.lovePlace(place)} />
-                          <DeleteBtn onClick={() => this.hatePlace(place)} />
-                      </ListItem>
-                    ))}
-                  </List>
-                ) : (
-                  <h3>No Results to Display</h3>
-                )}
-              </Col>
-{/* WHERE THE MAP WAS */}
-            </Row>
-          </Container>
-        </div>
-        {/* END SEARCH AREA 1 */}
+{/* END LOVED SECTION */}
 
         {/* HATED LOVED AREA */}
         <div style={{ opacity: this.state.signed ? 1 : 0 }}>
@@ -229,9 +199,6 @@ place={place} />
           {/* LOVED */}
           <Col size="md-12" >
             <Container fluid>
-              <Card>
-                <h1>Loved Places</h1>
-              </Card>
               {this.state.lovedplaces.length ? (
                 <List>
                   {this.state.lovedplaces.map(place => (
