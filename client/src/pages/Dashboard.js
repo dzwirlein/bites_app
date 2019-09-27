@@ -2,21 +2,14 @@ import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Card from "../components/Card";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import MapG from "../components/MapG";
 import MapMarkers from "../components/MapMarkers";
-import Alert from "../components/Alert";
 import PoweredByGoogle from "../components/PoweredByGoogle";
-import SaveBtn from "../components/SaveBtn";
 import InnerNav from "../components/InnerNav";
 import InnerFooter from "../components/InnerFooter";
-import SearchListing from "../components/SearchListing";
 import ResultsTable from "../components/ResultsTable";
-import { LovedInfo } from "../components/Loved";
-// import LovedComment from "../components/LovedComment";
 
 class Dashboard extends Component {
 
@@ -105,9 +98,7 @@ class Dashboard extends Component {
   };
    
   render() {
-
     return (
-
       <div>
         <InnerNav />
 
@@ -150,7 +141,6 @@ class Dashboard extends Component {
                         Search Results
                     </div>
                     <div className="card-body scrollable">
-                        {/* RESULTS 1 DIV */}
                         {this.state.places.length ? (
                             <table className="table">
                                 <thead>
@@ -170,55 +160,17 @@ class Dashboard extends Component {
                                         key={place.id}
                                         place={place}
                                     />
-                        ))}
+                                ))}
                             </table>
                         ) : (
                            <h3>No Results to Display</h3>
                         )}
                     </div>
-                    {/* END RESULTS 1 DIV */}
                 </div>
-                {/* END CARD */}
             </div>
         </section>
 
 {/* END RESULTS TABLE */}
-
-{/* LOVED SECTION */}
-
-          {/* <section className="my-3" id="results-section">
-              <div className="container bg-light rounded p-4">
-                  <div className="card my-0">
-                      <div className="card-header">
-                          Loved Restaurants
-                      </div>
-                      <div className="card-body">
-                        <div className="row">
-                            {this.state.lovedplaces.length ? (
-                            <div>
-                                {this.state.lovedplaces.map(place => (
-                                  <LovedInfo 
-                                      key={place.id}
-                                      place={place}
-                                  />
-                                  // <LovedComment
-                                  //     key={place.id}
-                                  //     place={place}
-                                  // />
-                                ))}
-                            </div>
-                            ) : (
-                                <h3>No Results to Display</h3>
-                            )}
-                        </div>
-                      </div>
-                  </div>
-              </div>
-          </section> */}
-
-{/* END LOVED SECTION */}
-
-        {/* HATED LOVED AREA */}
 
         {/* HISTORY MAP */}
 
@@ -251,7 +203,6 @@ class Dashboard extends Component {
                 <div>
                   {this.state.lovedplaces.map(place => (
                     <ListItem key={place._id}>
-
                       <h3>{place.name}</h3>
                       <List>
                         {place.lovedcomment.map(comment =>(
@@ -259,7 +210,6 @@ class Dashboard extends Component {
                           <Card>
                             Comment: {comment.body}                            
                           </Card>
-
                         </ListItem>
                         ))}
                       </List>
@@ -305,14 +255,12 @@ class Dashboard extends Component {
                 <div>
                    {this.state.hatedplaces.map(place => (
                     <ListItem key={place._id}>
-
                       <h3>{place.name}</h3>
                       <List>
                       {place.hatedcomment.map(comment =>(
                         <ListItem key={comment._id}>
                           <Card>
-                            Comment: {comment.body}
-                            
+                            Comment: {comment.body}                            
                           </Card>
                         </ListItem>
                         ))}

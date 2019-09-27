@@ -3,15 +3,13 @@ import "./style.css";
 
 function Card({children}) {
 
-    return(
-        
+    return(        
         <div className="">
             <p className="">
                 {children}
             </p>
             <hr />
         </div>
-
     )
 }
 

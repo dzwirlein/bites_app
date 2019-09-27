@@ -1,5 +1,4 @@
 import React from "react";
-// import "./style.css";
 import SaveBtn from "../SaveBtn";
 import DeleteBtn from "../DeleteBtn";
 
@@ -13,7 +12,6 @@ function ResultsTable(props) {
     const index = props.index + 1;
 
     return (
-
         <tbody>
             <tr>
                 <th scope="row">{index}</th>

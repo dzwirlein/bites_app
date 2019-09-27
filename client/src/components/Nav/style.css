@@ -2,7 +2,6 @@
     display: none !important;
 }
 
-
 .navbar {
     background: rgba(242, 100, 28, .8);
 }
@@ -19,7 +18,6 @@
 .btn:focus {
     box-shadow: none;
 }
-
 
 /* Medium devices (landscape phones, larger than 768px) */
 @media (min-width: 768px) { 
@@ -55,16 +53,5 @@
         color: #FEB64A;
         text-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
     }
-
- }
-
-/* Large devices (tablets, larger than 992px) */
-@media (min-width: 992px) {
-
-}
-
-/* X-Large devices (desktops, larger than 1200px) */
-@media (min-width: 1200px) { 
-
 
  }
