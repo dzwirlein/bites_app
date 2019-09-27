@@ -3,7 +3,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { Input } from "../components/Form";
-import InnerNav from "../components/InnerNav";
+import LoginNav from "../components/LoginNav";
 import Alert from "../components/Alert"
 
 
@@ -75,7 +75,7 @@ class LogIn extends Component {
     return (
 
       <div>
-        <InnerNav />
+        <LoginNav />
         <Container>
             <div className="card login-form p-3">
               <div className="card-body">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import InnerNav from "../components/InnerNav"
+import SignUpNav from "../components/SignUpNav"
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { Input } from "../components/Form";
@@ -56,7 +56,7 @@ class SignUp extends Component {
     return (
 
       <div>
-        <InnerNav />
+        <SignUpNav />
         <Container>
             <div className="card login-form p-3">
               <div className="card-body">
