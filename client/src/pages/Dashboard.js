@@ -28,6 +28,7 @@ class Dashboard extends Component {
     API.getPlacesGoogle(this.state.search.replace(/ /g, '+').replace(/,/g, ''))
     .then(res=>{
       this.setState({ places: res.data })
+      console.log(res.data)
     })
     .catch(err => console.log(err));
   };
@@ -156,13 +157,13 @@ class Dashboard extends Component {
                                     </tr>
                                 </thead>
                                 {this.state.places.map((place,index) => (
-                                  <tbody key={place._id}>
+                                  <tbody key={place.id}>
                                   <tr>
                                       <th scope="row">{index +1}</th>
                                       <td>{place.name}</td>
-                                      <td>{place.address}</td>
+                                      <td>{place.formatted_address}</td>
                                       <td>{place.rating}</td>
-                                      <td>{place.level}</td>
+                                      <td>{place.price_level}</td>
                                       <td><SaveBtn onClick={() => this.lovePlace(place)} /></td>
                                       <td><DeleteBtn onClick={() => this.hatePlace(place)} /></td>
                                   </tr>
