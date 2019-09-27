@@ -156,7 +156,7 @@ class Dashboard extends Component {
                                     </tr>
                                 </thead>
                                 {this.state.places.map((place,index) => (
-                                  <tbody>
+                                  <tbody key={place._id}>
                                   <tr>
                                       <th scope="row">{index +1}</th>
                                       <td>{place.name}</td>
