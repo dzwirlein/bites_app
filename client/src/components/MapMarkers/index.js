@@ -16,7 +16,7 @@ class MapMarkers extends Component {
     return (
       <div style={{ height: '100%', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: AIzaSyAYklydLZs626hOYXB_tAoRF-CTOqlRezI }}
+          bootstrapURLKeys={{ key: "AIzaSyAFqxY7BC8DKkQ2pEFzMVEcIVC3IF9qaKk" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >

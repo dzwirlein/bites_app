@@ -4,7 +4,7 @@ import { geolocated } from "react-geolocated";
 function MapG(props) {
 
   console.log(props);
-    const src="https://www.google.com/maps/embed/v1/search?q="+ props.search + "&key="+ AIzaSyAYklydLZs626hOYXB_tAoRF-CTOqlRezI
+  const src="https://www.google.com/maps/embed/v1/search?q="+ props.search + "&key=AIzaSyAFqxY7BC8DKkQ2pEFzMVEcIVC3IF9qaKk"
   return (
     <section className="mt-5 mb-3" id="map-section">
         <div className="container rounded bg-light p-3">
