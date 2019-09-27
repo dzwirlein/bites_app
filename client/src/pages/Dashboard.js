@@ -9,7 +9,8 @@ import MapMarkers from "../components/MapMarkers";
 import PoweredByGoogle from "../components/PoweredByGoogle";
 import InnerNav from "../components/InnerNav";
 import InnerFooter from "../components/InnerFooter";
-import ResultsTable from "../components/ResultsTable";
+import SaveBtn from "../components/SaveBtn";
+// import ResultsTable from "../components/ResultsTable";
 
 class Dashboard extends Component {
 
@@ -155,11 +156,17 @@ class Dashboard extends Component {
                                     </tr>
                                 </thead>
                                 {this.state.places.map((place,index) => (
-                                    <ResultsTable 
-                                        index={index}
-                                        key={place.id}
-                                        place={place}
-                                    />
+                                  <tbody>
+                                  <tr>
+                                      <th scope="row">{index}</th>
+                                      <td>{place.name}</td>
+                                      <td>{place.address}</td>
+                                      <td>{place.rating}</td>
+                                      <td>{place.level}</td>
+                                      <td><SaveBtn onClick={() => this.lovePlace(place)} /></td>
+                                      <td><DeleteBtn onClick={() => this.hatePlace(place)} /></td>
+                                  </tr>
+                              </tbody>
                                 ))}
                             </table>
                         ) : (
@@ -213,7 +220,7 @@ class Dashboard extends Component {
                         </ListItem>
                         ))}
                       </List>
-                      <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                      <DeleteBtn onClick={() => this.deleteLovedPlace(place._id)} />
                       <form>
                         <TextArea
                           value={this.state.comment}
@@ -265,7 +272,7 @@ class Dashboard extends Component {
                         </ListItem>
                         ))}
                       </List>
-                      <DeleteBtn onClick={() => this.deletePlace(place._id)} />
+                      <DeleteBtn onClick={() => this.deleteHatedPlace(place._id)} />
                       <form>
                         <TextArea
                           value={this.state.comment}
