@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Container } from "../components/Grid";
+import { Input } from "../components/Form";
 import InnerNav from "../components/InnerNav";
 import Alert from "../components/Alert"
 
